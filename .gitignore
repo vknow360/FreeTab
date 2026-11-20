@@ -1,0 +1,23 @@
+# FreeTab Git Ignore
+
+# Binaries & Build Output
+build/bin/
+*.exe
+*.dll
+
+# Dependencies
+node_modules/
+.npm/
+
+# OS and Editor metadata
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.idea/
+.vscode/
+
+# Keep embedded frontend assets and binaries
+!frontend/dist/
+!internal/assets/freetab_root_init_boot.img
+!internal/assets/Magisk.apk

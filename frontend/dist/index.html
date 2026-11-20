@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreeTab Pro — Acer One 8 (T4-82L Gen 2)</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-title">FreeTab</div>
+                    <div class="brand-tag">T4-82L Gen 2 Edition</div>
+                </div>
+            </div>
+
+            <nav class="nav-tree">
+                <div class="nav-group-label">OVERVIEW</div>
+                <button class="nav-link active" data-step="home">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Dashboard</span>
+                </button>
+
+                <div class="nav-group-label">GUIDED WORKFLOW</div>
+                <button class="nav-link" data-step="step1">
+                    <span class="nav-step-index">01</span>
+                    <span>Unlock &amp; Root</span>
+                </button>
+                <button class="nav-link" data-step="step2">
+                    <span class="nav-step-index">02</span>
+                    <span>Defeat MDM Lock</span>
+                </button>
+                <button class="nav-link" data-step="step3">
+                    <span class="nav-step-index">03</span>
+                    <span>Performance Boost</span>
+                </button>
+
+                <div class="nav-group-label">SYSTEM RESCUE &amp; UTILITIES</div>
+                <button class="nav-link" data-step="step4">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    <span>Partition Backup</span>
+                </button>
+                <button class="nav-link" data-step="step5">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                    <span>Stock Restore</span>
+                </button>
+                <button class="nav-link" data-step="emergency">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <span>Emergency Recovery</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-meta">
+                <button id="btnEnsureTools" class="meta-row">
+                    <span class="meta-label">PLATFORM TOOLS</span>
+                    <span id="toolsStatusPill" class="badge-status badge-neutral">Checking...</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="workspace">
+            <!-- Hardware Telemetry Header -->
+            <header class="telemetry-bar">
+                <div class="telemetry-device">
+                    <span id="deviceRing" class="connection-ring disconnected"></span>
+                    <div class="telemetry-text">
+                        <div class="telemetry-title" id="deviceStatusText">No Device Detected</div>
+                        <div class="telemetry-sub" id="deviceDetailText">Connect Acer tablet via USB cable</div>
+                    </div>
+                </div>
+
+                <div class="telemetry-tags" id="telemetryTags">
+                    <span class="telemetry-tag" id="tagModel">Model: --</span>
+                    <span class="telemetry-tag" id="tagRelease">Android: --</span>
+                    <span class="telemetry-tag" id="tagRoot">Root: --</span>
+                </div>
+
+                <div class="telemetry-actions">
+                    <button id="btnRefreshDevice" class="btn-icon" title="Refresh Hardware Status">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dynamic Views Container -->
+            <main class="viewport">
+                <!-- VIEW: Dashboard / Home -->
+                <section id="view-home" class="view-panel active">
+                    <div class="view-lead">
+                        <div class="lead-badge">FIRMWARE &amp; SECURITY SUITE</div>
+                        <h2>Acer One 8 Device Liberation Suite</h2>
+                        <p>Complete zero-hassle toolkit designed specifically for the Indian Government educational edition Acer One 8 (T4-82L Gen 2 / Helio G85) running Android 16.</p>
+                    </div>
+
+                    <!-- Critical Notice Strip -->
+                    <div class="notice-strip notice-warning">
+                        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <div class="notice-body">
+                            <strong>MANDATORY WORKFLOW ORDER:</strong> 1. Clear Storage (Factory Mode) ➔ 2. Enable OEM Unlocking &amp; USB Debugging (Offline) ➔ 3. Fastboot Unlock &amp; Magisk Root ➔ 4. Defeat MDM (Wi-Fi OFF!).
+                        </div>
+                    </div>
+
+                    <!-- Workflow Cards -->
+                    <div class="workflow-grid">
+                        <div class="workflow-card" onclick="goToStep('step1')">
+                            <div class="workflow-step-num">01</div>
+                            <div class="workflow-content">
+                                <h3>Prep, Unlock &amp; Root</h3>
+                                <p>Clear storage, enable OEM Unlocking, and flash pre-patched Magisk kernel to slots A &amp; B in Fastboot mode.</p>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                        </div>
+
+                        <div class="workflow-card" onclick="goToStep('step2')">
+                            <div class="workflow-step-num">02</div>
+                            <div class="workflow-content">
+                                <h3>Defeat Zero-Touch MDM</h3>
+                                <p>Disables enterprise provisioning, locks config immutable, and establishes persistent kernel-level firewall.</p>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                        </div>
+
+                        <div class="workflow-card" onclick="goToStep('step3')">
+                            <div class="workflow-step-num">03</div>
+                            <div class="workflow-content">
+                                <h3>Extreme Performance Boost</h3>
+                                <p>Cuts animation latency to 0.5x, purges background telemetry, and reclaims ~800 MB system RAM.</p>
+                            </div>
+                            <div class="workflow-arrow">→</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-bar">
+                        <button class="btn btn-primary btn-lg" onclick="goToStep('step1')">
+                            <span>Begin Step 1 (Unlock &amp; Root)</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                        <button class="btn btn-secondary btn-lg" onclick="goToStep('emergency')">
+                            <span>Hardware Recovery Guide</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Step 1 (Fastboot Unlock & Root) -->
+                <section id="view-step1" class="view-panel">
+                    <div class="stepper-nav">
+                        <div class="stepper-node active">
+                            <span class="stepper-num">1</span>
+                            <span class="stepper-label">Unlock &amp; Root</span>
+                        </div>
+                        <div class="stepper-line"></div>
+                        <div class="stepper-node">
+                            <span class="stepper-num">2</span>
+                            <span class="stepper-label">MDM Defense</span>
+                        </div>
+                        <div class="stepper-line"></div>
+                        <div class="stepper-node">
+                            <span class="stepper-num">3</span>
+                            <span class="stepper-label">Performance</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage A: Factory Wipe & OEM Unlock Prep -->
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Part A: Wipe &amp; Authorize OEM Unlocking (Crucial First Step)</h3>
+                            <span class="badge-status badge-fastboot">Required on Fresh Tablets</span>
+                        </div>
+                        
+                        <div class="timeline-steps">
+                            <div class="timeline-item">
+                                <span class="timeline-marker">1</span>
+                                <div class="timeline-detail">Power <strong>OFF</strong> the tablet. Hold <kbd>Power</kbd> + <kbd>Volume Down</kbd> to enter Factory Mode ➔ select <strong>Clear Storage</strong> (wipes pre-existing MDM state clean).</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">2</span>
+                                <div class="timeline-detail">Tablet reboots into Android setup wizard. <strong>DO NOT CONNECT TO WI-FI!</strong> Choose <em>"Set up offline"</em> or <em>Skip</em>.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">3</span>
+                                <div class="timeline-detail">Open <strong>Settings &gt; About tablet</strong> ➔ Tap <strong>Build number 7 times</strong> to enable Developer options.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">4</span>
+                                <div class="timeline-detail">Open <strong>Settings &gt; System &gt; Developer options</strong>:
+                                    <ul style="margin-top: 4px; margin-left: 20px;">
+                                        <li>Toggle <strong>"OEM unlocking"</strong> to <strong>ON</strong> (Tap <em>Enable</em> on the prompt).</li>
+                                        <li>Toggle <strong>"USB debugging"</strong> to <strong>ON</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage B: Fastboot Unlock & Flash -->
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Part B: Fastboot Flashing</h3>
+                            <span class="badge-status badge-success">Fastboot Mode</span>
+                        </div>
+                        
+                        <div class="timeline-steps">
+                            <div class="timeline-item">
+                                <span class="timeline-marker">5</span>
+                                <div class="timeline-detail">Power <strong>OFF</strong> tablet ➔ Hold <kbd>Power</kbd> + <kbd>Volume Up</kbd> ➔ Navigate to <code>[Fastboot Mode]</code> with <kbd>Vol Up</kbd>, select with <kbd>Vol Down</kbd>.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">6</span>
+                                <div class="timeline-detail">Connect the USB-C cable firmly to your computer, then click the flash button below.</div>
+                            </div>
+                        </div>
+
+                        <div class="notice-strip notice-danger">
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            <div class="notice-body">
+                                <strong>WATCH TABLET SCREEN:</strong> As soon as the command runs, look at the tablet screen and press <kbd>Volume Up</kbd> once to confirm bootloader unlock!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="btnRunStep1" class="btn btn-primary btn-lg" onclick="runStep1()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <span>Flash Unlock &amp; Root Now</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="goToStep('step2')">
+                            <span>Proceed to Step 2 →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Step 2 (MDM Neutralizer) -->
+                <section id="view-step2" class="view-panel">
+                    <div class="stepper-nav">
+                        <div class="stepper-node completed">
+                            <span class="stepper-num">✓</span>
+                            <span class="stepper-label">Unlock &amp; Root</span>
+                        </div>
+                        <div class="stepper-line active"></div>
+                        <div class="stepper-node active">
+                            <span class="stepper-num">2</span>
+                            <span class="stepper-label">MDM Defense</span>
+                        </div>
+                        <div class="stepper-line"></div>
+                        <div class="stepper-node">
+                            <span class="stepper-num">3</span>
+                            <span class="stepper-label">Performance</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Prerequisites &amp; Setup</h3>
+                            <span class="badge-status badge-adb">Requires ADB (USB Debugging)</span>
+                        </div>
+
+                        <div class="timeline-steps">
+                            <div class="timeline-item">
+                                <span class="timeline-marker">1</span>
+                                <div class="timeline-detail">Complete Android setup wizard <strong>OFFLINE</strong>. Skip Wi-Fi connection entirely.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">2</span>
+                                <div class="timeline-detail">Ensure Developer Options and <strong>USB debugging</strong> are ON (Tap Build number 7x if needed).</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">3</span>
+                                <div class="timeline-detail">Plug USB into PC and check <em>"Always allow from this computer"</em> on screen.</div>
+                            </div>
+                        </div>
+
+                        <div class="notice-strip notice-info">
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <div class="notice-body">
+                                <strong>Magisk Superuser Elevation:</strong> FreeTab automatically installs Magisk. If prompted on screen, tap <strong>GRANT</strong> to authorize root privileges.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="btnRunStep2" class="btn btn-primary btn-lg" onclick="runStep2()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <span>Neutralize Institutional MDM</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="goToStep('step3')">
+                            <span>Proceed to Step 3 →</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Step 3 (Performance Boost) -->
+                <section id="view-step3" class="view-panel">
+                    <div class="stepper-nav">
+                        <div class="stepper-node completed">
+                            <span class="stepper-num">✓</span>
+                            <span class="stepper-label">Unlock &amp; Root</span>
+                        </div>
+                        <div class="stepper-line active"></div>
+                        <div class="stepper-node completed">
+                            <span class="stepper-num">✓</span>
+                            <span class="stepper-label">MDM Defense</span>
+                        </div>
+                        <div class="stepper-line active"></div>
+                        <div class="stepper-node active">
+                            <span class="stepper-num">3</span>
+                            <span class="stepper-label">Performance</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Hardware Tuning &amp; Debloat Profile</h3>
+                            <span class="badge-status badge-success">Safe Non-Destructive Tweaks</span>
+                        </div>
+
+                        <div class="spec-matrix">
+                            <div class="spec-item">
+                                <div class="spec-label">UI ANIMATION SCALE</div>
+                                <div class="spec-value">1.0x ➔ 0.5x Scale</div>
+                                <div class="spec-desc">Halves rendering transition delay for instantaneous touch responsiveness.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">BACKGROUND TELEMETRY</div>
+                                <div class="spec-value">7 Bloat Packages Purged</div>
+                                <div class="spec-desc">Disables Digital Wellbeing, PartnerSetup, LogTool, and print recommendation daemon.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">RAM RECOVERY</div>
+                                <div class="spec-value">~800 MB Reclaimed</div>
+                                <div class="spec-desc">Eliminates persistent background daemon overhead on Helio G85.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">SETUP WIZARD FINALIZER</div>
+                                <div class="spec-value">Dismiss &amp; Complete</div>
+                                <div class="spec-desc">Clears sticky system provisioning state and prevents setup alerts.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="btnRunStep3" class="btn btn-primary btn-lg" onclick="runStep3()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                            <span>Apply Performance Optimizations</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="goToStep('home')">
+                            <span>Return to Dashboard</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Step 4 (Stock Backup) -->
+                <section id="view-step4" class="view-panel">
+                    <div class="view-lead">
+                        <div class="lead-badge">UTILITY</div>
+                        <h2>Stock Dynamic Partition Backup</h2>
+                        <p>Dumps factory system, product, and system_ext dynamic partitions directly to raw `.img` files on your PC via root ADB.</p>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Target Directory</h3>
+                        </div>
+
+                        <div class="input-container">
+                            <label class="field-label">Backup Output Folder:</label>
+                            <div class="field-row">
+                                <input type="text" id="backupDirPath" class="field-input" readonly placeholder="Select destination folder..." />
+                                <button class="btn btn-secondary" onclick="browseBackupDir()">Browse...</button>
+                            </div>
+                        </div>
+
+                        <div class="partition-preview-list">
+                            <div class="partition-item">
+                                <span class="partition-name">stock_system.img</span>
+                                <span class="partition-size">~1.1 GB</span>
+                            </div>
+                            <div class="partition-item">
+                                <span class="partition-name">stock_product.img</span>
+                                <span class="partition-size">~1.4 GB</span>
+                            </div>
+                            <div class="partition-item">
+                                <span class="partition-name">stock_system_ext.img</span>
+                                <span class="partition-size">~540 MB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="btnRunBackup" class="btn btn-primary btn-lg" onclick="runBackup()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span>Start Partition Backup</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Step 5 (Stock Restore) -->
+                <section id="view-step5" class="view-panel">
+                    <div class="view-lead">
+                        <div class="lead-badge">UTILITY</div>
+                        <h2>Stock Firmware Restoration</h2>
+                        <p>Restores backed-up factory partition images back to the tablet using userspace Fastbootd dynamic mapper.</p>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Source Directory</h3>
+                            <span class="badge-status badge-fastboot">Requires Fastboot Mode</span>
+                        </div>
+
+                        <div class="input-container">
+                            <label class="field-label">Folder containing stock_system.img, stock_product.img, stock_system_ext.img:</label>
+                            <div class="field-row">
+                                <input type="text" id="restoreDirPath" class="field-input" readonly placeholder="Select backup directory..." />
+                                <button class="btn btn-secondary" onclick="browseRestoreDir()">Browse...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="btnRunRestore" class="btn btn-danger btn-lg" onclick="runRestore()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                            <span>Restore Stock Images</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- VIEW: Emergency Guide -->
+                <section id="view-emergency" class="view-panel">
+                    <div class="view-lead">
+                        <div class="lead-badge badge-danger">HARDWARE RESCUE</div>
+                        <h2>Emergency Recovery Cheat Sheet</h2>
+                        <p>Hardwired hardware button shortcuts for recovering any frozen, reboot-looping, or misconfigured Acer One 8 tablet.</p>
+                    </div>
+
+                    <div class="rescue-grid">
+                        <div class="rescue-card">
+                            <div class="rescue-badge badge-danger">CRITICAL FIX</div>
+                            <h4>Hard Power Off (Stuck in Loop)</h4>
+                            <p class="rescue-intro">If the tablet keeps restarting and won't shut down:</p>
+                            <div class="key-sequence">
+                                <span class="key-tag">1. UNPLUG USB CABLE</span>
+                                <div class="key-combo">
+                                    <kbd>Power</kbd> + <kbd>Vol Up</kbd> + <kbd>Vol Down</kbd>
+                                </div>
+                                <span class="key-time">Hold for 15-20 seconds continuously</span>
+                            </div>
+                            <div class="rescue-foot">Unplugging the cable is mandatory — USB power current triggers immediate automatic reboot on Helio G85.</div>
+                        </div>
+
+                        <div class="rescue-card">
+                            <div class="rescue-badge badge-fastboot">FIRMWARE FLASH</div>
+                            <h4>Enter Fastboot Mode</h4>
+                            <p class="rescue-intro">To access bootloader flashing mode:</p>
+                            <div class="key-sequence">
+                                <span class="key-tag">From Powered Off State</span>
+                                <div class="key-combo">
+                                    <kbd>Power</kbd> + <kbd>Volume Up</kbd>
+                                </div>
+                                <span class="key-time">Release when small boot selection menu appears</span>
+                            </div>
+                            <div class="rescue-foot">Use Vol Up to navigate to <code>[Fastboot Mode]</code>, press Vol Down to select.</div>
+                        </div>
+
+                        <div class="rescue-card">
+                            <div class="rescue-badge badge-neutral">FACTORY WIPE</div>
+                            <h4>Clear Storage (Factory Reset)</h4>
+                            <p class="rescue-intro">To wipe corrupt data or pre-existing MDM state:</p>
+                            <div class="key-sequence">
+                                <span class="key-tag">Factory Mode</span>
+                                <div class="key-combo">
+                                    <kbd>Power</kbd> + <kbd>Volume Down</kbd>
+                                </div>
+                                <span class="key-time">Hold until MediaTek factory menu appears</span>
+                            </div>
+                            <div class="rescue-foot">Select <strong>Clear Storage</strong> to format data partition cleanly.</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Precision Developer Console -->
+            <footer class="console-dock" id="consoleDock">
+                <div class="console-bar">
+                    <div class="console-label">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        <span>DEVICE TELEMETRY &amp; EXECUTION LOG</span>
+                    </div>
+                    <div class="console-controls">
+                        <button class="btn-console" onclick="copyLogs()" title="Copy entire console log">Copy</button>
+                        <button class="btn-console" onclick="clearLogs()" title="Clear console output">Clear</button>
+                        <button class="btn-console" id="btnToggleConsole" onclick="toggleConsole()" title="Expand / Collapse console">Expand</button>
+                    </div>
+                </div>
+                <div class="console-viewport" id="logOutput">
+                    <div class="log-entry log-entry-dim">FreeTab v2.5 initialized. Awaiting user command...</div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
