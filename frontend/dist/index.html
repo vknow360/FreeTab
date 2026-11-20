@@ -287,39 +287,53 @@
                         </div>
                     </div>
 
-                    <!-- Stage 2B: Root Grant & MDM Elimination -->
+                    <!-- Stage 2B: Authorize Root to Shell -->
                     <div class="panel-card">
                         <div class="card-header">
-                            <h3>Part 2B: Grant Shell Root &amp; Neutralize MDM</h3>
-                            <span class="badge-status badge-success">Execute After Tablet Reboots</span>
+                            <h3>Part 2B: Grant Shell Root Permission (Crucial Prerequisite)</h3>
+                            <span class="badge-status badge-fastboot">Requires User Grant on Tablet</span>
                         </div>
 
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">4</span>
-                                <div class="timeline-detail">After tablet restarts, unlock the screen (keep Wi-Fi OFF!).</div>
+                                <div class="timeline-detail">After the tablet finishes rebooting, unlock the screen (keep Wi-Fi OFF!).</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">5</span>
-                                <div class="timeline-detail">Click <strong>"2B: Authorize Root &amp; Neutralize MDM"</strong> below.</div>
+                                <div class="timeline-detail">Click <strong>"2B: Authorize Shell Root"</strong> below.</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">6</span>
-                                <div class="timeline-detail"><strong>LOOK AT TABLET SCREEN:</strong> A <em>"Superuser Request"</em> for Shell will appear. Tap <strong>GRANT</strong> or <strong>ALLOW</strong>.</div>
-                            </div>
-                        </div>
-
-                        <div class="notice-strip notice-info">
-                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            <div class="notice-body">
-                                <strong>Complete MDM Elimination:</strong> Once root is granted, FreeTab disables Zero-Touch activities, locks configuration immutable, applies the kernel firewall, and installs the persistent Magisk boot guard!
+                                <div class="timeline-detail"><strong>LOOK AT TABLET SCREEN:</strong> When the <em>"Superuser Request"</em> for Shell appears, tap <strong>GRANT</strong> or <strong>ALLOW</strong>.
+                                    <br /><span style="font-size: 12px; color: var(--text-muted);">(Alternatively, open Magisk app ➔ tap Gear Settings icon ➔ set <strong>Superuser Access</strong> to <strong>"Apps and ADB"</strong>).</span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="panel-actions" style="margin-top: 14px;">
                             <button id="btnRunStep2B" class="btn btn-primary btn-lg" onclick="runStep2B()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                                <span>2B: Authorize Shell Root Permission</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2C: Run Anti-MDM Defense Commands -->
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Part 2C: Execute Anti-MDM Defense Commands</h3>
+                            <span class="badge-status badge-success">Run ONLY After Root is Granted</span>
+                        </div>
+
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+                            Executes the complete defense routine: disables Zero-Touch activities, locks configuration store with immutable filesystem protection (<code>chattr +i</code>), blocks <code>DeviceLockController</code> at kernel firewall level, and installs persistent startup boot guard.
+                        </p>
+
+                        <div class="panel-actions" style="margin-top: 14px;">
+                            <button id="btnRunStep2C" class="btn btn-primary btn-lg" onclick="runStep2C()">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                <span>2B: Authorize Root &amp; Neutralize MDM</span>
+                                <span>2C: Execute Anti-MDM Defense</span>
                             </button>
                             <button class="btn btn-secondary" onclick="goToStep('step3')">
                                 <span>Proceed to Step 3 →</span>

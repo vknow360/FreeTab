@@ -171,8 +171,8 @@ func (a *App) RunStep2A_InstallMagisk() error {
 	return a.actions.InstallMagiskApp(a.ctx)
 }
 
-// RunStep2B_NeutralizeMDM verifies root grant and eliminates MDM locks.
-func (a *App) RunStep2B_NeutralizeMDM() error {
+// RunStep2B_AuthorizeRoot prompts and confirms root permission for Shell.
+func (a *App) RunStep2B_AuthorizeRoot() error {
 	a.runningMutex.Lock()
 	a.isBusy = true
 	defer func() {
@@ -186,7 +186,25 @@ func (a *App) RunStep2B_NeutralizeMDM() error {
 		}
 	}
 
-	return a.actions.NeutralizeMDM(a.ctx)
+	return a.actions.AuthorizeShellRoot(a.ctx)
+}
+
+// RunStep2C_ExecuteMDM executes the anti-MDM commands after root is confirmed.
+func (a *App) RunStep2C_ExecuteMDM() error {
+	a.runningMutex.Lock()
+	a.isBusy = true
+	defer func() {
+		a.isBusy = false
+		a.runningMutex.Unlock()
+	}()
+
+	if a.adb.ExePath == "" {
+		if _, err := a.EnsureTools(); err != nil {
+			return fmt.Errorf("adb tool unavailable: %w", err)
+		}
+	}
+
+	return a.actions.ExecuteMDMDefense(a.ctx)
 }
 
 // RunStep2_MDM executes Step 2 (MDM / Zero-Touch neutralization).

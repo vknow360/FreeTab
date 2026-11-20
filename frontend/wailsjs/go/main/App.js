@@ -22,8 +22,12 @@ export function RunStep2A_InstallMagisk() {
   return window['go']['main']['App']['RunStep2A_InstallMagisk']();
 }
 
-export function RunStep2B_NeutralizeMDM() {
-  return window['go']['main']['App']['RunStep2B_NeutralizeMDM']();
+export function RunStep2B_AuthorizeRoot() {
+  return window['go']['main']['App']['RunStep2B_AuthorizeRoot']();
+}
+
+export function RunStep2C_ExecuteMDM() {
+  return window['go']['main']['App']['RunStep2C_ExecuteMDM']();
 }
 
 export function RunStep2_MDM() {

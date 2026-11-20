@@ -281,11 +281,11 @@ async function runStep2A() {
     setButtonBusy("btnRunStep2A", true, "Installing Magisk APK...", "<span>2A: Install Magisk App &amp; Trigger Setup</span>");
 
     try {
-        appendLog("[START] Initiating Phase 2A: Installing Magisk APK & launching on tablet...");
+        appendLog("[START] Initiating Stage 2A: Installing Magisk APK & launching on tablet...");
         await window.go.main.App.RunStep2A_InstallMagisk();
-        appendLog("[INFO] Phase 2A complete. If Magisk shows 'Requires Additional Setup', tap OK and let the tablet reboot.");
+        appendLog("[INFO] Stage 2A complete. If Magisk shows 'Requires Additional Setup', tap OK and let the tablet reboot.");
     } catch (err) {
-        appendLog("[ERROR] Phase 2A failed: " + err);
+        appendLog("[ERROR] Stage 2A failed: " + err);
     } finally {
         setButtonBusy("btnRunStep2A", false, "", "<span>2A: Install Magisk App &amp; Trigger Setup</span>");
         refreshDeviceStatus();
@@ -294,22 +294,38 @@ async function runStep2A() {
 
 async function runStep2B() {
     if (isExecuting) return;
-    setButtonBusy("btnRunStep2B", true, "Authorizing & Neutralizing...", "<span>2B: Authorize Root &amp; Neutralize MDM</span>");
+    setButtonBusy("btnRunStep2B", true, "Waiting for Root Grant...", "<span>2B: Authorize Shell Root Permission</span>");
 
     try {
-        appendLog("[START] Initiating Phase 2B: Verifying Shell root grant & applying MDM countermeasures...");
-        await window.go.main.App.RunStep2B_NeutralizeMDM();
-        appendLog("[SUCCESS] Phase 2B complete! All MDM components permanently neutralized.");
+        appendLog("[START] Initiating Stage 2B: Triggering Superuser Request on tablet screen...");
+        await window.go.main.App.RunStep2B_AuthorizeRoot();
+        appendLog("[SUCCESS] Stage 2B complete! Shell root access is confirmed. You can now run Stage 2C.");
     } catch (err) {
-        appendLog("[ERROR] Phase 2B failed: " + err);
+        appendLog("[ERROR] Stage 2B failed: " + err);
     } finally {
-        setButtonBusy("btnRunStep2B", false, "", "<span>2B: Authorize Root &amp; Neutralize MDM</span>");
+        setButtonBusy("btnRunStep2B", false, "", "<span>2B: Authorize Shell Root Permission</span>");
+        refreshDeviceStatus();
+    }
+}
+
+async function runStep2C() {
+    if (isExecuting) return;
+    setButtonBusy("btnRunStep2C", true, "Applying MDM Countermeasures...", "<span>2C: Execute Anti-MDM Defense</span>");
+
+    try {
+        appendLog("[START] Initiating Stage 2C: Executing full Zero-Touch & MDM defense routine...");
+        await window.go.main.App.RunStep2C_ExecuteMDM();
+        appendLog("[SUCCESS] Stage 2C complete! All MDM components permanently neutralized.");
+    } catch (err) {
+        appendLog("[ERROR] Stage 2C failed: " + err);
+    } finally {
+        setButtonBusy("btnRunStep2C", false, "", "<span>2C: Execute Anti-MDM Defense</span>");
         refreshDeviceStatus();
     }
 }
 
 async function runStep2() {
-    return runStep2B();
+    return runStep2C();
 }
 
 async function runStep3() {
