@@ -110,37 +110,31 @@ flowchart TD
 ## 🛠️ Building from Source
 
 ### Prerequisites
+- **OS**: Windows 10 or 11 (64-bit)
 - **Go**: 1.21 or newer ([golang.org](https://golang.org))
 - **Wails v2 CLI**:
   ```bash
   go install github.com/wailsapp/wails/v2/cmd/wails@latest
   ```
-- **Node.js**: (Optional - FreeTab uses pre-bundled vanilla assets in `frontend/dist/`)
-- **WebView2 Runtime**: Installed by default on Windows 10/11.
-- **Linux Packages** (for Linux GUI build): `sudo apt install libgtk-3-dev libwebkit2gtk-4.1-dev` (or `libwebkit2gtk-4.0-dev` on older distros)
+- **WebView2 Runtime**: Installed by default on modern Windows.
+*(Node.js is not required — FreeTab uses pre-bundled vanilla assets in `frontend/dist/`)*
 
-### Windows Build
+### 1-Click Windows Build
 Run the included build script:
 ```cmd
 build.bat
 ```
-Or directly:
+Or build directly via Wails CLI:
 ```bash
 wails build -clean -platform windows/amd64
 ```
-The output binary will be generated at `build/bin/FreeTab.exe`.
-
-### Linux Build
-**Option A: Full Linux Desktop GUI (WebKit2GTK 4.1 / Recommended)**
-Install the required system dependencies and build with Wails:
-```bash
-sudo apt update && sudo apt install -y libgtk-3-dev libwebkit2gtk-4.1-dev
-wails build -clean -platform linux/amd64 -tags "webkit2_41"
+The compiled standalone executable will be generated at:
+```text
+build/bin/FreeTab.exe
 ```
-*(On older Ubuntu versions before 24.04, install `libwebkit2gtk-4.0-dev` and omit `-tags "webkit2_41"`).*
 
-**Option C: Manual GitHub Actions CI**
-Go to your repository's **Actions** tab ➔ select **FreeTab Multi-Platform Build** ➔ click **Run workflow**. You can select your desired target (`all`, `windows`, or `linux`). The compiled release binaries will be uploaded directly as downloadable run artifacts.
+### GitHub Actions (Cloud Build)
+Go to your repository's **Actions** tab ➔ select **FreeTab Windows Build** ➔ click **Run workflow**. The Windows executable will be compiled and uploaded as a downloadable artifact.
 
 ---
 
