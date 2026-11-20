@@ -8,7 +8,6 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-	"syscall"
 	"time"
 )
 
@@ -46,7 +45,7 @@ func (a *ADB) log(msg string) {
 // Run executes an adb command with streaming output.
 func (a *ADB) Run(ctx context.Context, args ...string) (string, error) {
 	cmd := exec.CommandContext(ctx, a.ExePath, args...)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	cmd.SysProcAttr = getSysProcAttr()
 
 	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
@@ -81,7 +80,7 @@ func (a *ADB) Run(ctx context.Context, args ...string) (string, error) {
 // Shell runs a simple adb shell command and returns output.
 func (a *ADB) Shell(ctx context.Context, shellCmd string) (string, error) {
 	cmd := exec.CommandContext(ctx, a.ExePath, "shell", shellCmd)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	cmd.SysProcAttr = getSysProcAttr()
 	out, err := cmd.CombinedOutput()
 	return strings.TrimSpace(string(out)), err
 }
@@ -95,7 +94,7 @@ func (a *ADB) Detect(ctx context.Context) *DeviceInfo {
 	}
 
 	cmd := exec.CommandContext(ctx, a.ExePath, "devices")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	cmd.SysProcAttr = getSysProcAttr()
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		info.Error = err.Error()
@@ -189,14 +188,14 @@ func (a *ADB) RootShell(ctx context.Context, script string) error {
 
 	// Push to /data/local/tmp/
 	pushCmd := exec.CommandContext(ctx, a.ExePath, "push", tmpFile.Name(), "/data/local/tmp/_freetab.sh")
-	pushCmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	pushCmd.SysProcAttr = getSysProcAttr()
 	if err := pushCmd.Run(); err != nil {
 		return fmt.Errorf("failed to push command script: %w", err)
 	}
 
 	// Execute with su and remove
 	execCmd := exec.CommandContext(ctx, a.ExePath, "shell", "su -c 'sh /data/local/tmp/_freetab.sh; rm -f /data/local/tmp/_freetab.sh'")
-	execCmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	execCmd.SysProcAttr = getSysProcAttr()
 
 	out, err := execCmd.CombinedOutput()
 	outStr := strings.TrimSpace(string(out))

@@ -7,7 +7,6 @@ import (
 	"io"
 	"os/exec"
 	"strings"
-	"syscall"
 	"time"
 )
 
@@ -33,7 +32,7 @@ func (f *Fastboot) log(msg string) {
 // Run executes a fastboot command with streaming output.
 func (f *Fastboot) Run(ctx context.Context, args ...string) (string, error) {
 	cmd := exec.CommandContext(ctx, f.ExePath, args...)
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	cmd.SysProcAttr = getSysProcAttr()
 
 	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
@@ -72,7 +71,7 @@ func (f *Fastboot) Detect(ctx context.Context) (bool, string) {
 	}
 
 	cmd := exec.CommandContext(ctx, f.ExePath, "devices")
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	cmd.SysProcAttr = getSysProcAttr()
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, ""

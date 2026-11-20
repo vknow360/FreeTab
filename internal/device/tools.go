@@ -8,9 +8,20 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 )
 
-const PlatformToolsURL = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip"
+// GetPlatformToolsURL returns the official Google platform-tools download URL for the target OS.
+func GetPlatformToolsURL() string {
+	switch runtime.GOOS {
+	case "darwin":
+		return "https://dl.google.com/android/repository/platform-tools-latest-darwin.zip"
+	case "linux":
+		return "https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
+	default:
+		return "https://dl.google.com/android/repository/platform-tools-latest-windows.zip"
+	}
+}
 
 // ToolPaths holds paths to the detected adb and fastboot binaries.
 type ToolPaths struct {
@@ -20,22 +31,24 @@ type ToolPaths struct {
 
 // GetCacheDir returns the default user cache directory for FreeTab tools.
 func GetCacheDir() string {
-	userProfile := os.Getenv("USERPROFILE")
-	if userProfile == "" {
-		userProfile = os.Getenv("HOME")
+	home, err := os.UserHomeDir()
+	if err != nil || home == "" {
+		home = os.Getenv("USERPROFILE")
+		if home == "" {
+			home = os.Getenv("HOME")
+		}
+		if home == "" {
+			home = "."
+		}
 	}
-	if userProfile == "" {
-		userProfile = "."
-	}
-	return filepath.Join(userProfile, ".freetab", "cache")
+	return filepath.Join(home, ".freetab", "cache")
 }
 
-// FindTools searches for adb.exe and fastboot.exe in standard locations.
+// FindTools searches for adb and fastboot in standard locations.
 func FindTools() ToolPaths {
 	var paths ToolPaths
 
-	// Potential search locations
-	userProfile := os.Getenv("USERPROFILE")
+	home, _ := os.UserHomeDir()
 	appDir, _ := os.Getwd()
 	execDir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 
@@ -43,12 +56,21 @@ func FindTools() ToolPaths {
 		filepath.Join(execDir, "tools", "platform-tools"),
 		filepath.Join(appDir, "tools", "platform-tools"),
 		filepath.Join(GetCacheDir(), "platform-tools"),
-		filepath.Join(userProfile, "platform-tools"),
+	}
+	if home != "" {
+		candidates = append(candidates, filepath.Join(home, "platform-tools"))
+	}
+
+	adbBin := "adb"
+	fastbootBin := "fastboot"
+	if runtime.GOOS == "windows" {
+		adbBin = "adb.exe"
+		fastbootBin = "fastboot.exe"
 	}
 
 	for _, dir := range candidates {
-		adbCandidate := filepath.Join(dir, "adb.exe")
-		fastbootCandidate := filepath.Join(dir, "fastboot.exe")
+		adbCandidate := filepath.Join(dir, adbBin)
+		fastbootCandidate := filepath.Join(dir, fastbootBin)
 
 		if paths.Adb == "" {
 			if fi, err := os.Stat(adbCandidate); err == nil && !fi.IsDir() {
@@ -64,12 +86,12 @@ func FindTools() ToolPaths {
 
 	// Fallback to system PATH
 	if paths.Adb == "" {
-		if p, err := exec.LookPath("adb"); err == nil {
+		if p, err := exec.LookPath(adbBin); err == nil {
 			paths.Adb = p
 		}
 	}
 	if paths.Fastboot == "" {
-		if p, err := exec.LookPath("fastboot"); err == nil {
+		if p, err := exec.LookPath(fastbootBin); err == nil {
 			paths.Fastboot = p
 		}
 	}
@@ -91,10 +113,11 @@ func EnsureTools(logFunc func(string)) (ToolPaths, error) {
 		return tools, fmt.Errorf("failed to create cache dir %s: %w", cacheDir, err)
 	}
 
+	downloadURL := GetPlatformToolsURL()
 	zipPath := filepath.Join(cacheDir, "platform-tools.zip")
-	logFunc(fmt.Sprintf("Downloading %s ...", PlatformToolsURL))
+	logFunc(fmt.Sprintf("Downloading %s ...", downloadURL))
 
-	resp, err := http.Get(PlatformToolsURL)
+	resp, err := http.Get(downloadURL)
 	if err != nil {
 		return tools, fmt.Errorf("download error: %w", err)
 	}
@@ -139,11 +162,11 @@ func unzip(src, dest string) error {
 	for _, f := range r.File {
 		fpath := filepath.Join(dest, f.Name)
 		if f.FileInfo().IsDir() {
-			_ = os.MkdirAll(fpath, os.ModePerm)
+			_ = os.MkdirAll(fpath, 0755)
 			continue
 		}
 
-		if err = os.MkdirAll(filepath.Dir(fpath), os.ModePerm); err != nil {
+		if err = os.MkdirAll(filepath.Dir(fpath), 0755); err != nil {
 			return err
 		}
 
@@ -163,6 +186,14 @@ func unzip(src, dest string) error {
 		rc.Close()
 		if err != nil {
 			return err
+		}
+
+		// Ensure executables have permission to run on Unix platforms
+		if runtime.GOOS != "windows" {
+			baseName := filepath.Base(fpath)
+			if baseName == "adb" || baseName == "fastboot" || f.Mode()&0111 != 0 {
+				_ = os.Chmod(fpath, 0755)
+			}
 		}
 	}
 	return nil

@@ -117,20 +117,38 @@ flowchart TD
   ```
 - **Node.js**: (Optional - FreeTab uses pre-bundled vanilla assets in `frontend/dist/`)
 - **WebView2 Runtime**: Installed by default on Windows 10/11.
+- **Linux Packages** (for Linux GUI build): `sudo apt install libgtk-3-dev libwebkit2gtk-4.0-dev`
 
-### 1-Click Compilation
+### Windows Build
 Run the included build script:
 ```cmd
 build.bat
 ```
-Or run directly:
+Or directly:
 ```bash
 wails build -clean -platform windows/amd64
 ```
-The output executable will be generated at:
-```text
-build/bin/FreeTab.exe
+The output binary will be generated at `build/bin/FreeTab.exe`.
+
+### Linux Build
+**Option A: Direct Go build (`GOOS=linux`)**
+```bash
+# In PowerShell:
+$env:CGO_ENABLED="0"; $env:GOOS="linux"; $env:GOARCH="amd64"; go build -o build/bin/freetab-linux-amd64
+
+# In Bash / Linux:
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/bin/freetab-linux-amd64
 ```
+
+**Option B: Full Linux Desktop GUI (WebKit2GTK)**
+Compiling the full GUI for Linux requires GTK3 and WebKit2GTK headers (via Linux host, WSL2, or automated GitHub Actions CI):
+```bash
+sudo apt update && sudo apt install -y libgtk-3-dev libwebkit2gtk-4.0-dev
+wails build -clean -platform linux/amd64
+```
+
+**Option C: Automated GitHub Actions CI**
+Pushing commits or tags triggers `.github/workflows/build.yml`, automatically building and uploading both Windows (`FreeTab.exe`) and Linux (`FreeTab`) binary artifacts.
 
 ---
 
