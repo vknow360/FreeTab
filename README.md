@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 FreeTab Pro (v2.5)
+# 🚀 FreeTab (v1.0)
 ### Standalone All-in-One GUI Root, Anti-MDM Defense & Performance Suite
 **Engineered specifically for Acer One 8 (T4-82L Gen 2 / Helio G85) Android 16 Tablets**
 
