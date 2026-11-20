@@ -153,6 +153,42 @@ func (a *App) RunStep1_Root() error {
 	return a.actions.RunFastbootRoot(a.ctx)
 }
 
+// RunStep2A_InstallMagisk installs Magisk APK and launches setup on tablet.
+func (a *App) RunStep2A_InstallMagisk() error {
+	a.runningMutex.Lock()
+	a.isBusy = true
+	defer func() {
+		a.isBusy = false
+		a.runningMutex.Unlock()
+	}()
+
+	if a.adb.ExePath == "" {
+		if _, err := a.EnsureTools(); err != nil {
+			return fmt.Errorf("adb tool unavailable: %w", err)
+		}
+	}
+
+	return a.actions.InstallMagiskApp(a.ctx)
+}
+
+// RunStep2B_NeutralizeMDM verifies root grant and eliminates MDM locks.
+func (a *App) RunStep2B_NeutralizeMDM() error {
+	a.runningMutex.Lock()
+	a.isBusy = true
+	defer func() {
+		a.isBusy = false
+		a.runningMutex.Unlock()
+	}()
+
+	if a.adb.ExePath == "" {
+		if _, err := a.EnsureTools(); err != nil {
+			return fmt.Errorf("adb tool unavailable: %w", err)
+		}
+	}
+
+	return a.actions.NeutralizeMDM(a.ctx)
+}
+
 // RunStep2_MDM executes Step 2 (MDM / Zero-Touch neutralization).
 func (a *App) RunStep2_MDM() error {
 	a.runningMutex.Lock()

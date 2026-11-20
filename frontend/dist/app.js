@@ -276,20 +276,40 @@ async function runStep1() {
     }
 }
 
-async function runStep2() {
+async function runStep2A() {
     if (isExecuting) return;
-    setButtonBusy("btnRunStep2", true, "Applying MDM Countermeasures...", "<span>Neutralize Institutional MDM</span>");
+    setButtonBusy("btnRunStep2A", true, "Installing Magisk APK...", "<span>2A: Install Magisk App &amp; Trigger Setup</span>");
 
     try {
-        appendLog("[START] Initiating Step 2: Zero-Touch & MDM Neutralization...");
-        await window.go.main.App.RunStep2_MDM();
-        appendLog("[SUCCESS] Step 2 complete. All MDM mechanisms permanently neutralized.");
+        appendLog("[START] Initiating Phase 2A: Installing Magisk APK & launching on tablet...");
+        await window.go.main.App.RunStep2A_InstallMagisk();
+        appendLog("[INFO] Phase 2A complete. If Magisk shows 'Requires Additional Setup', tap OK and let the tablet reboot.");
     } catch (err) {
-        appendLog("[ERROR] Step 2 failed: " + err);
+        appendLog("[ERROR] Phase 2A failed: " + err);
     } finally {
-        setButtonBusy("btnRunStep2", false, "", "<span>Neutralize Institutional MDM</span>");
+        setButtonBusy("btnRunStep2A", false, "", "<span>2A: Install Magisk App &amp; Trigger Setup</span>");
         refreshDeviceStatus();
     }
+}
+
+async function runStep2B() {
+    if (isExecuting) return;
+    setButtonBusy("btnRunStep2B", true, "Authorizing & Neutralizing...", "<span>2B: Authorize Root &amp; Neutralize MDM</span>");
+
+    try {
+        appendLog("[START] Initiating Phase 2B: Verifying Shell root grant & applying MDM countermeasures...");
+        await window.go.main.App.RunStep2B_NeutralizeMDM();
+        appendLog("[SUCCESS] Phase 2B complete! All MDM components permanently neutralized.");
+    } catch (err) {
+        appendLog("[ERROR] Phase 2B failed: " + err);
+    } finally {
+        setButtonBusy("btnRunStep2B", false, "", "<span>2B: Authorize Root &amp; Neutralize MDM</span>");
+        refreshDeviceStatus();
+    }
+}
+
+async function runStep2() {
+    return runStep2B();
 }
 
 async function runStep3() {

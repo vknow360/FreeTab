@@ -257,43 +257,74 @@
                         </div>
                     </div>
 
+                    <!-- Stage 2A: Magisk Installation -->
                     <div class="panel-card">
                         <div class="card-header">
-                            <h3>Prerequisites &amp; Setup</h3>
-                            <span class="badge-status badge-adb">Requires ADB (USB Debugging)</span>
+                            <h3>Part 2A: Install Magisk Management App</h3>
+                            <span class="badge-status badge-adb">ADB Mode</span>
                         </div>
 
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">1</span>
-                                <div class="timeline-detail">Complete Android setup wizard <strong>OFFLINE</strong>. Skip Wi-Fi connection entirely.</div>
+                                <div class="timeline-detail">Ensure tablet is booted into Android, USB debugging is ON, and USB cable is connected.</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">2</span>
-                                <div class="timeline-detail">Ensure Developer Options and <strong>USB debugging</strong> are ON (Tap Build number 7x if needed).</div>
+                                <div class="timeline-detail">Click <strong>"2A: Install Magisk App"</strong> below. FreeTab installs and launches Magisk.</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">3</span>
-                                <div class="timeline-detail">Plug USB into PC and check <em>"Always allow from this computer"</em> on screen.</div>
+                                <div class="timeline-detail"><strong>WATCH TABLET SCREEN:</strong> When Magisk prompts <em>"Requires Additional Setup"</em>, tap <strong>OK</strong>. The tablet will automatically reboot in ~10 seconds.</div>
+                            </div>
+                        </div>
+
+                        <div class="panel-actions" style="margin-top: 14px;">
+                            <button id="btnRunStep2A" class="btn btn-secondary btn-lg" onclick="runStep2A()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                <span>2A: Install Magisk App &amp; Trigger Setup</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2B: Root Grant & MDM Elimination -->
+                    <div class="panel-card">
+                        <div class="card-header">
+                            <h3>Part 2B: Grant Shell Root &amp; Neutralize MDM</h3>
+                            <span class="badge-status badge-success">Execute After Tablet Reboots</span>
+                        </div>
+
+                        <div class="timeline-steps">
+                            <div class="timeline-item">
+                                <span class="timeline-marker">4</span>
+                                <div class="timeline-detail">After tablet restarts, unlock the screen (keep Wi-Fi OFF!).</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">5</span>
+                                <div class="timeline-detail">Click <strong>"2B: Authorize Root &amp; Neutralize MDM"</strong> below.</div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-marker">6</span>
+                                <div class="timeline-detail"><strong>LOOK AT TABLET SCREEN:</strong> A <em>"Superuser Request"</em> for Shell will appear. Tap <strong>GRANT</strong> or <strong>ALLOW</strong>.</div>
                             </div>
                         </div>
 
                         <div class="notice-strip notice-info">
                             <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
                             <div class="notice-body">
-                                <strong>Magisk Superuser Elevation:</strong> FreeTab automatically installs Magisk. If prompted on screen, tap <strong>GRANT</strong> to authorize root privileges.
+                                <strong>Complete MDM Elimination:</strong> Once root is granted, FreeTab disables Zero-Touch activities, locks configuration immutable, applies the kernel firewall, and installs the persistent Magisk boot guard!
                             </div>
                         </div>
-                    </div>
 
-                    <div class="panel-actions">
-                        <button id="btnRunStep2" class="btn btn-primary btn-lg" onclick="runStep2()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                            <span>Neutralize Institutional MDM</span>
-                        </button>
-                        <button class="btn btn-secondary" onclick="goToStep('step3')">
-                            <span>Proceed to Step 3 →</span>
-                        </button>
+                        <div class="panel-actions" style="margin-top: 14px;">
+                            <button id="btnRunStep2B" class="btn btn-primary btn-lg" onclick="runStep2B()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <span>2B: Authorize Root &amp; Neutralize MDM</span>
+                            </button>
+                            <button class="btn btn-secondary" onclick="goToStep('step3')">
+                                <span>Proceed to Step 3 →</span>
+                            </button>
+                        </div>
                     </div>
                 </section>
 
