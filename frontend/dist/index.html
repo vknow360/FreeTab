@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FreeTab v1.0 — Acer One 8 (T4-82L Gen 2)</title>
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="app-shell">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="brand">
                 <div class="brand-mark">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                 </div>
@@ -25,7 +28,10 @@
             <nav class="nav-tree">
                 <div class="nav-group-label">OVERVIEW</div>
                 <button class="nav-link active" data-step="home">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
                     <span>Dashboard</span>
                 </button>
 
@@ -45,15 +51,29 @@
 
                 <div class="nav-group-label">SYSTEM RESCUE &amp; UTILITIES</div>
                 <button class="nav-link" data-step="step4">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
                     <span>Partition Backup</span>
                 </button>
                 <button class="nav-link" data-step="step5">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <polyline points="23 20 23 14 17 14"></polyline>
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    </svg>
                     <span>Stock Restore</span>
                 </button>
                 <button class="nav-link" data-step="emergency">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                        </path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
                     <span>Emergency Recovery</span>
                 </button>
             </nav>
@@ -86,7 +106,11 @@
 
                 <div class="telemetry-actions">
                     <button id="btnRefreshDevice" class="btn-icon" title="Refresh Hardware Status">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M23 4v6h-6"></path>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
                     </button>
                 </div>
             </header>
@@ -98,14 +122,23 @@
                     <div class="view-lead">
                         <div class="lead-badge">FIRMWARE &amp; SECURITY SUITE</div>
                         <h2>Acer One 8 Device Liberation Suite</h2>
-                        <p>Complete zero-hassle toolkit designed specifically for the Indian Government educational edition Acer One 8 (T4-82L Gen 2 / Helio G85) running Android 16.</p>
+                        <p>Complete zero-hassle toolkit designed specifically for the Indian Government educational
+                            edition Acer One 8 (T4-82L Gen 2 / Helio G85) running Android 16.</p>
                     </div>
 
                     <!-- Critical Notice Strip -->
                     <div class="notice-strip notice-warning">
-                        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
                         <div class="notice-body">
-                            <strong>MANDATORY WORKFLOW ORDER:</strong> 1. Clear Storage (Factory Mode) ➔ 2. Enable OEM Unlocking &amp; USB Debugging (Offline) ➔ 3. Fastboot Unlock &amp; Magisk Root ➔ 4. Defeat MDM (Wi-Fi OFF!).
+                            <strong>MANDATORY WORKFLOW ORDER:</strong> 1. Clear Storage (Factory Mode) ➔ 2. Enable OEM
+                            Unlocking &amp; USB Debugging (Offline) ➔ 3. Fastboot Unlock &amp; Magisk Root ➔ 4. Defeat
+                            MDM (Wi-Fi OFF!).
                         </div>
                     </div>
 
@@ -115,7 +148,8 @@
                             <div class="workflow-step-num">01</div>
                             <div class="workflow-content">
                                 <h3>Prep, Unlock &amp; Root</h3>
-                                <p>Clear storage, enable OEM Unlocking, and flash pre-patched Magisk kernel to slots A &amp; B in Fastboot mode.</p>
+                                <p>Clear storage, enable OEM Unlocking, and flash pre-patched Magisk kernel to slots A
+                                    &amp; B in Fastboot mode.</p>
                             </div>
                             <div class="workflow-arrow">→</div>
                         </div>
@@ -124,7 +158,8 @@
                             <div class="workflow-step-num">02</div>
                             <div class="workflow-content">
                                 <h3>Defeat Zero-Touch MDM</h3>
-                                <p>Disables enterprise provisioning, locks config immutable, and establishes persistent kernel-level firewall.</p>
+                                <p>Disables enterprise provisioning, locks config immutable, and establishes persistent
+                                    kernel-level firewall.</p>
                             </div>
                             <div class="workflow-arrow">→</div>
                         </div>
@@ -133,7 +168,8 @@
                             <div class="workflow-step-num">03</div>
                             <div class="workflow-content">
                                 <h3>Extreme Performance Boost</h3>
-                                <p>Cuts animation latency to 0.5x, purges background telemetry, and reclaims ~800 MB system RAM.</p>
+                                <p>Cuts animation latency to 0.5x, purges background telemetry, and reclaims ~800 MB
+                                    system RAM.</p>
                             </div>
                             <div class="workflow-arrow">→</div>
                         </div>
@@ -142,7 +178,10 @@
                     <div class="hero-cta-bar">
                         <button class="btn btn-primary btn-lg" onclick="goToStep('step1')">
                             <span>Begin Step 1 (Unlock &amp; Root)</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </button>
                         <button class="btn btn-secondary btn-lg" onclick="goToStep('emergency')">
                             <span>Hardware Recovery Guide</span>
@@ -175,25 +214,35 @@
                             <h3>Part A: Wipe &amp; Authorize OEM Unlocking (Crucial First Step)</h3>
                             <span class="badge-status badge-fastboot">Required on Fresh Tablets</span>
                         </div>
-                        
+
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">1</span>
-                                <div class="timeline-detail">Power <strong>OFF</strong> the tablet. Hold <kbd>Power</kbd> + <kbd>Volume Down</kbd> to enter Factory Mode ➔ select <strong>Clear Storage</strong> (wipes pre-existing MDM state clean).</div>
+                                <div class="timeline-detail">Power <strong>OFF</strong> the tablet. Hold
+                                    <kbd>Power</kbd> + <kbd>Volume Down</kbd> to enter Factory Mode ➔ select
+                                    <strong>Clear Storage</strong> (wipes pre-existing MDM state clean).
+                                </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">2</span>
-                                <div class="timeline-detail">Tablet reboots into Android setup wizard. <strong>DO NOT CONNECT TO WI-FI!</strong> Choose <em>"Set up offline"</em> or <em>Skip</em>.</div>
+                                <div class="timeline-detail">Tablet reboots into Android setup wizard. <strong>DO NOT
+                                        CONNECT TO WI-FI!</strong> Choose <em>"Set up offline"</em> or <em>Skip</em>.
+                                </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">3</span>
-                                <div class="timeline-detail">Open <strong>Settings &gt; About tablet</strong> ➔ Tap <strong>Build number 7 times</strong> to enable Developer options.</div>
+                                <div class="timeline-detail">Open <strong>Settings &gt; About tablet</strong> ➔ Tap
+                                    <strong>Build number 7 times</strong> to enable Developer options.
+                                </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">4</span>
-                                <div class="timeline-detail">Open <strong>Settings &gt; System &gt; Developer options</strong>:
+                                <div class="timeline-detail">Open <strong>Settings &gt; System &gt; Developer
+                                        options</strong>:
                                     <ul style="margin-top: 4px; margin-left: 20px;">
-                                        <li>Toggle <strong>"OEM unlocking"</strong> to <strong>ON</strong> (Tap <em>Enable</em> on the prompt).</li>
+                                        <li>Toggle <strong>"OEM unlocking"</strong> to <strong>ON</strong> (Tap
+                                            <em>Enable</em> on the prompt).
+                                        </li>
                                         <li>Toggle <strong>"USB debugging"</strong> to <strong>ON</strong>.</li>
                                     </ul>
                                 </div>
@@ -207,41 +256,60 @@
                             <h3>Part B: Fastboot Flashing</h3>
                             <span class="badge-status badge-success">Fastboot Mode</span>
                         </div>
-                        
+
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">5</span>
                                 <div class="timeline-detail">
                                     <strong>Entering Fastboot Mode:</strong>
-                                    <div style="margin-top: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                                        <button id="btnRebootFastboot" class="btn btn-secondary btn-sm" onclick="rebootToFastboot()">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                                    <div
+                                        style="margin-top: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                        <button id="btnRebootFastboot" class="btn btn-secondary btn-sm"
+                                            onclick="rebootToFastboot()">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M23 4v6h-6"></path>
+                                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                                            </svg>
                                             <span>⚡ 1-Click Reboot to Fastboot (via ADB)</span>
                                         </button>
-                                        <span style="font-size: 12px; color: var(--text-muted);">(No button presses needed if USB debugging is ON)</span>
+                                        <span style="font-size: 12px; color: var(--text-muted);">(No button presses
+                                            needed if USB debugging is ON)</span>
                                     </div>
                                     <div style="margin-top: 6px; font-size: 12px; color: var(--text-muted);">
-                                        <em>(Alternative if powered off: hold <kbd>Power</kbd> + <kbd>Volume Up</kbd> ➔ navigate to <code>[Fastboot Mode]</code> with <kbd>Vol Up</kbd>, select with <kbd>Vol Down</kbd>).</em>
+                                        <em>(Alternative if powered off: hold <kbd>Power</kbd> + <kbd>Volume Up</kbd> ➔
+                                            navigate to <code>[Fastboot Mode]</code> with <kbd>Vol Up</kbd>, select with
+                                            <kbd>Vol Down</kbd>).</em>
                                     </div>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">6</span>
-                                <div class="timeline-detail">Connect the USB-C cable firmly to your computer, then click the flash button below.</div>
+                                <div class="timeline-detail">Connect the USB-C cable firmly to your computer, then click
+                                    the flash button below.</div>
                             </div>
                         </div>
 
                         <div class="notice-strip notice-danger">
-                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
                             <div class="notice-body">
-                                <strong>WATCH TABLET SCREEN:</strong> As soon as the command runs, look at the tablet screen and press <kbd>Volume Up</kbd> once to confirm bootloader unlock!
+                                <strong>WATCH TABLET SCREEN:</strong> As soon as the command runs, look at the tablet
+                                screen and press <kbd>Volume Up</kbd> once to confirm bootloader unlock!
                             </div>
                         </div>
                     </div>
 
                     <div class="panel-actions">
                         <button id="btnRunStep1" class="btn btn-primary btn-lg" onclick="runStep1()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
                             <span>Flash Unlock &amp; Root Now</span>
                         </button>
                         <button class="btn btn-secondary" onclick="goToStep('step2')">
@@ -279,21 +347,33 @@
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">1</span>
-                                <div class="timeline-detail">Ensure tablet is booted into Android, USB debugging is ON, and USB cable is connected.</div>
+                                <div class="timeline-detail">Ensure tablet is booted into Android, USB debugging is ON,
+                                    and USB cable is connected.</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">2</span>
-                                <div class="timeline-detail">Click <strong>"2A: Install Magisk App"</strong> below. FreeTab installs and launches Magisk.</div>
+                                <div class="timeline-detail">Click <strong>"2A: Install Magisk App"</strong> below.
+                                    FreeTab installs and launches Magisk.</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">3</span>
-                                <div class="timeline-detail"><strong>WATCH TABLET SCREEN:</strong> When Magisk prompts <em>"Requires Additional Setup"</em>, tap <strong>OK</strong>. The tablet will automatically reboot in ~10 seconds.</div>
+                                <div class="timeline-detail"><strong>WATCH TABLET SCREEN:</strong> When Magisk prompts
+                                    <em>"Requires Additional Setup"</em>, tap <strong>OK</strong>. The tablet will
+                                    automatically reboot in ~10 seconds.
+                                </div>
                             </div>
                         </div>
 
                         <div class="panel-actions" style="margin-top: 14px;">
                             <button id="btnRunStep2A" class="btn btn-secondary btn-lg" onclick="runStep2A()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
                                 <span>2A: Install Magisk App &amp; Trigger Setup</span>
                             </button>
                         </div>
@@ -309,23 +389,33 @@
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">4</span>
-                                <div class="timeline-detail">After the tablet finishes rebooting, unlock the screen (keep Wi-Fi OFF!).</div>
+                                <div class="timeline-detail">After the tablet finishes rebooting, unlock the screen
+                                    (keep Wi-Fi OFF!).</div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">5</span>
-                                <div class="timeline-detail">Click <strong>"2B: Authorize Shell Root"</strong> below.</div>
+                                <div class="timeline-detail">Click <strong>"2B: Authorize Shell Root"</strong> below.
+                                </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">6</span>
-                                <div class="timeline-detail"><strong>LOOK AT TABLET SCREEN:</strong> When the <em>"Superuser Request"</em> for Shell appears, tap <strong>GRANT</strong> or <strong>ALLOW</strong>.
-                                    <br /><span style="font-size: 12px; color: var(--text-muted);">(Alternatively, open Magisk app ➔ tap Gear Settings icon ➔ set <strong>Superuser Access</strong> to <strong>"Apps and ADB"</strong>).</span>
+                                <div class="timeline-detail"><strong>LOOK AT TABLET SCREEN:</strong> When the
+                                    <em>"Superuser Request"</em> for Shell appears, tap <strong>GRANT</strong> or
+                                    <strong>ALLOW</strong>.
+                                    <br /><span style="font-size: 12px; color: var(--text-muted);">(Alternatively, open
+                                        Magisk app ➔ tap Gear Settings icon ➔ set <strong>Superuser Access</strong> to
+                                        <strong>"Shell"</strong>).</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="panel-actions" style="margin-top: 14px;">
                             <button id="btnRunStep2B" class="btn btn-primary btn-lg" onclick="runStep2B()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 14 14"></polyline>
+                                </svg>
                                 <span>2B: Authorize Shell Root Permission</span>
                             </button>
                         </div>
@@ -339,12 +429,18 @@
                         </div>
 
                         <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
-                            Executes the complete defense routine: disables Zero-Touch activities, locks configuration store with immutable filesystem protection (<code>chattr +i</code>), blocks <code>DeviceLockController</code> at kernel firewall level, and installs persistent startup boot guard.
+                            Executes the complete defense routine: disables Zero-Touch activities, locks configuration
+                            store with immutable filesystem protection (<code>chattr +i</code>), blocks
+                            <code>DeviceLockController</code> at kernel firewall level, and installs persistent startup
+                            boot guard.
                         </p>
 
                         <div class="panel-actions" style="margin-top: 14px;">
                             <button id="btnRunStep2C" class="btn btn-primary btn-lg" onclick="runStep2C()">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
                                 <span>2C: Execute Anti-MDM Defense</span>
                             </button>
                             <button class="btn btn-secondary" onclick="goToStep('step3')">
@@ -381,9 +477,19 @@
 
                         <!-- Warning Notice Strip -->
                         <div class="notice-strip notice-warning">
-                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                                </path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
                             <div class="notice-body">
-                                <strong>OPTIONAL SYSTEM TWEAK:</strong> This step modifies animation scales and disables background services (Digital Wellbeing, Print Spooler, Google Feedback, MediaTek LogTool, and PartnerSetup). While it saves ~300MB RAM and reduces disk writes, do not run this if you need network printing or screen-time tracking.
+                                <strong>OPTIONAL SYSTEM TWEAK:</strong> This step modifies animation scales and disables
+                                background services (Digital Wellbeing, Print Spooler, Google Feedback, MediaTek
+                                LogTool, and PartnerSetup). While it saves ~300MB RAM and reduces disk writes, do not
+                                run this if you need network printing or screen-time tracking.
                             </div>
                         </div>
 
@@ -391,29 +497,36 @@
                             <div class="spec-item">
                                 <div class="spec-label">UI ANIMATION SCALE</div>
                                 <div class="spec-value">1.0x ➔ 0.5x Scale</div>
-                                <div class="spec-desc">Halves rendering transition delay for instantaneous touch responsiveness.</div>
+                                <div class="spec-desc">Halves rendering transition delay for instantaneous touch
+                                    responsiveness.</div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-label">BACKGROUND TELEMETRY</div>
                                 <div class="spec-value">7 Bloat Packages Purged</div>
-                                <div class="spec-desc">Disables Digital Wellbeing, PartnerSetup, LogTool, and print recommendation daemon.</div>
+                                <div class="spec-desc">Disables Digital Wellbeing, PartnerSetup, LogTool, and print
+                                    recommendation daemon.</div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-label">RAM RECOVERY</div>
                                 <div class="spec-value">~800 MB Reclaimed</div>
-                                <div class="spec-desc">Eliminates persistent background daemon overhead on Helio G85.</div>
+                                <div class="spec-desc">Eliminates persistent background daemon overhead on Helio G85.
+                                </div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-label">SETUP WIZARD FINALIZER</div>
                                 <div class="spec-value">Dismiss &amp; Complete</div>
-                                <div class="spec-desc">Clears sticky system provisioning state and prevents setup alerts.</div>
+                                <div class="spec-desc">Clears sticky system provisioning state and prevents setup
+                                    alerts.</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="panel-actions">
                         <button id="btnRunStep3" class="btn btn-primary btn-lg" onclick="runStep3()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
                             <span>Apply Performance Optimizations</span>
                         </button>
                         <button class="btn btn-secondary" onclick="goToStep('home')">
@@ -427,7 +540,8 @@
                     <div class="view-lead">
                         <div class="lead-badge">UTILITY</div>
                         <h2>Stock Dynamic Partition Backup</h2>
-                        <p>Dumps factory system, product, and system_ext dynamic partitions directly to raw `.img` files on your PC via root ADB.</p>
+                        <p>Dumps factory system, product, and system_ext dynamic partitions directly to raw `.img` files
+                            on your PC via root ADB.</p>
                     </div>
 
                     <div class="panel-card">
@@ -438,7 +552,8 @@
                         <div class="input-container">
                             <label class="field-label">Backup Output Folder:</label>
                             <div class="field-row">
-                                <input type="text" id="backupDirPath" class="field-input" readonly placeholder="Select destination folder..." />
+                                <input type="text" id="backupDirPath" class="field-input" readonly
+                                    placeholder="Select destination folder..." />
                                 <button class="btn btn-secondary" onclick="browseBackupDir()">Browse...</button>
                             </div>
                         </div>
@@ -461,7 +576,12 @@
 
                     <div class="panel-actions">
                         <button id="btnRunBackup" class="btn btn-primary btn-lg" onclick="runBackup()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
                             <span>Start Partition Backup</span>
                         </button>
                     </div>
@@ -472,7 +592,8 @@
                     <div class="view-lead">
                         <div class="lead-badge">UTILITY</div>
                         <h2>Stock Firmware Restoration</h2>
-                        <p>Restores backed-up factory partition images back to the tablet using userspace Fastbootd dynamic mapper.</p>
+                        <p>Restores backed-up factory partition images back to the tablet using userspace Fastbootd
+                            dynamic mapper.</p>
                     </div>
 
                     <div class="panel-card">
@@ -482,9 +603,11 @@
                         </div>
 
                         <div class="input-container">
-                            <label class="field-label">Folder containing stock_system.img, stock_product.img, stock_system_ext.img:</label>
+                            <label class="field-label">Folder containing stock_system.img, stock_product.img,
+                                stock_system_ext.img:</label>
                             <div class="field-row">
-                                <input type="text" id="restoreDirPath" class="field-input" readonly placeholder="Select backup directory..." />
+                                <input type="text" id="restoreDirPath" class="field-input" readonly
+                                    placeholder="Select backup directory..." />
                                 <button class="btn btn-secondary" onclick="browseRestoreDir()">Browse...</button>
                             </div>
                         </div>
@@ -492,7 +615,12 @@
 
                     <div class="panel-actions">
                         <button id="btnRunRestore" class="btn btn-danger btn-lg" onclick="runRestore()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <polyline points="23 20 23 14 17 14"></polyline>
+                                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                            </svg>
                             <span>Restore Stock Images</span>
                         </button>
                     </div>
@@ -503,7 +631,8 @@
                     <div class="view-lead">
                         <div class="lead-badge badge-danger">HARDWARE RESCUE</div>
                         <h2>Emergency Recovery Cheat Sheet</h2>
-                        <p>Hardwired hardware button shortcuts for recovering any frozen, reboot-looping, or misconfigured Acer One 8 tablet.</p>
+                        <p>Hardwired hardware button shortcuts for recovering any frozen, reboot-looping, or
+                            misconfigured Acer One 8 tablet.</p>
                     </div>
 
                     <div class="rescue-grid">
@@ -518,7 +647,8 @@
                                 </div>
                                 <span class="key-time">Hold for 15-20 seconds continuously</span>
                             </div>
-                            <div class="rescue-foot">Unplugging the cable is mandatory — USB power current triggers immediate automatic reboot on Helio G85.</div>
+                            <div class="rescue-foot">Unplugging the cable is mandatory — USB power current triggers
+                                immediate automatic reboot on Helio G85.</div>
                         </div>
 
                         <div class="rescue-card">
@@ -532,7 +662,8 @@
                                 </div>
                                 <span class="key-time">Release when small boot selection menu appears</span>
                             </div>
-                            <div class="rescue-foot">Use Vol Up to navigate to <code>[Fastboot Mode]</code>, press Vol Down to select.</div>
+                            <div class="rescue-foot">Use Vol Up to navigate to <code>[Fastboot Mode]</code>, press Vol
+                                Down to select.</div>
                         </div>
 
                         <div class="rescue-card">
@@ -546,7 +677,8 @@
                                 </div>
                                 <span class="key-time">Hold until MediaTek factory menu appears</span>
                             </div>
-                            <div class="rescue-foot">Select <strong>Clear Storage</strong> to format data partition cleanly.</div>
+                            <div class="rescue-foot">Select <strong>Clear Storage</strong> to format data partition
+                                cleanly.</div>
                         </div>
                     </div>
                 </section>
@@ -556,13 +688,18 @@
             <footer class="console-dock" id="consoleDock">
                 <div class="console-bar">
                     <div class="console-label">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="4 17 10 11 4 5"></polyline>
+                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        </svg>
                         <span>DEVICE TELEMETRY &amp; EXECUTION LOG</span>
                     </div>
                     <div class="console-controls">
                         <button class="btn-console" onclick="copyLogs()" title="Copy entire console log">Copy</button>
                         <button class="btn-console" onclick="clearLogs()" title="Clear console output">Clear</button>
-                        <button class="btn-console" id="btnToggleConsole" onclick="toggleConsole()" title="Expand / Collapse console">Expand</button>
+                        <button class="btn-console" id="btnToggleConsole" onclick="toggleConsole()"
+                            title="Expand / Collapse console">Expand</button>
                     </div>
                 </div>
                 <div class="console-viewport" id="logOutput">
@@ -575,4 +712,5 @@
     <!-- Application Script -->
     <script src="app.js"></script>
 </body>
+
 </html>
