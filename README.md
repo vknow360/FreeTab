@@ -147,8 +147,8 @@ sudo apt update && sudo apt install -y libgtk-3-dev libwebkit2gtk-4.0-dev
 wails build -clean -platform linux/amd64
 ```
 
-**Option C: Automated GitHub Actions CI**
-Pushing commits or tags triggers `.github/workflows/build.yml`, automatically building and uploading both Windows (`FreeTab.exe`) and Linux (`FreeTab`) binary artifacts.
+**Option C: Manual GitHub Actions CI**
+Go to your repository's **Actions** tab ➔ select **FreeTab Multi-Platform Build** ➔ click **Run workflow**. You can select your desired target (`all`, `windows`, or `linux`). The compiled release binaries will be uploaded directly as downloadable run artifacts.
 
 ---
 
