@@ -346,6 +346,10 @@ async function runStep2() {
 
 async function runStep3() {
     if (isExecuting) return;
+
+    const confirmed = confirm("WARNING: Performance boost modifies system animation scales and disables 7 background services (including Print Spooler, Digital Wellbeing, and MediaTek log tools).\n\nThis step is OPTIONAL. Would you like to proceed?");
+    if (!confirmed) return;
+
     setButtonBusy("btnRunStep3", true, "Applying Performance Tweaks...", "<span>Apply Performance Optimizations</span>");
 
     try {

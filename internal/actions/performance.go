@@ -20,8 +20,12 @@ var bloatList = []string{
 // RunPerformanceBoost applies 0.5x animation scales, debloats background telemetry, and finalizes setup wizard.
 func (a *Actions) RunPerformanceBoost(ctx context.Context) error {
 	a.log("==========================================================================")
-	a.log("🚀 STEP 3: Apply Extreme Performance Boost & Deep Debloat")
+	a.log("🚀 STEP 3: Apply Performance Boost & Debloat (OPTIONAL)")
 	a.log("==========================================================================")
+	a.log("⚠️ WARNING: This step modifies global animation scales and disables 7 background")
+	a.log("   services including Print Spooler, Digital Wellbeing, and MediaTek LogTool.")
+	a.log("   If you need local network printing or screen-time limits, skip this step.")
+	a.log("--------------------------------------------------------------------------")
 
 	if err := a.ADB.WaitForDevice(ctx, 30*time.Second); err != nil {
 		return err
