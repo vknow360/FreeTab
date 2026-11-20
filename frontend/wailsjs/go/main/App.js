@@ -18,6 +18,14 @@ export function RunStep1_Root() {
   return window['go']['main']['App']['RunStep1_Root']();
 }
 
+export function RunStep2A_InstallMagisk() {
+  return window['go']['main']['App']['RunStep2A_InstallMagisk']();
+}
+
+export function RunStep2B_NeutralizeMDM() {
+  return window['go']['main']['App']['RunStep2B_NeutralizeMDM']();
+}
+
 export function RunStep2_MDM() {
   return window['go']['main']['App']['RunStep2_MDM']();
 }

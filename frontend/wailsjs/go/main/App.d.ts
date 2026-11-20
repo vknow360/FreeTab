@@ -11,6 +11,10 @@ export function EnsureTools():Promise<device.ToolPaths>;
 
 export function RunStep1_Root():Promise<void>;
 
+export function RunStep2A_InstallMagisk():Promise<void>;
+
+export function RunStep2B_NeutralizeMDM():Promise<void>;
+
 export function RunStep2_MDM():Promise<void>;
 
 export function RunStep3_Performance():Promise<void>;
