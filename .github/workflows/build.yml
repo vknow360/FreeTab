@@ -1,16 +1,22 @@
 name: FreeTab Multi-Platform Build
 
 on:
-  push:
-    branches: [ main ]
-    tags: [ 'v*' ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target platform to compile'
+        required: true
+        type: choice
+        default: 'all'
+        options:
+          - all
+          - windows
+          - linux
 
 jobs:
   build-windows:
     name: Build Windows (amd64)
+    if: inputs.target == 'all' || inputs.target == 'windows'
     runs-on: windows-latest
     steps:
       - name: Checkout Code
@@ -47,6 +53,7 @@ jobs:
 
   build-linux:
     name: Build Linux GUI (amd64)
+    if: inputs.target == 'all' || inputs.target == 'linux'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
