@@ -9,6 +9,8 @@ export function DetectDevice():Promise<main.DeviceState>;
 
 export function EnsureTools():Promise<device.ToolPaths>;
 
+export function RebootToFastboot():Promise<void>;
+
 export function RunStep1_Root():Promise<void>;
 
 export function RunStep2A_InstallMagisk():Promise<void>;

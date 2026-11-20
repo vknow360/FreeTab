@@ -211,7 +211,19 @@
                         <div class="timeline-steps">
                             <div class="timeline-item">
                                 <span class="timeline-marker">5</span>
-                                <div class="timeline-detail">Power <strong>OFF</strong> tablet ➔ Hold <kbd>Power</kbd> + <kbd>Volume Up</kbd> ➔ Navigate to <code>[Fastboot Mode]</code> with <kbd>Vol Up</kbd>, select with <kbd>Vol Down</kbd>.</div>
+                                <div class="timeline-detail">
+                                    <strong>Entering Fastboot Mode:</strong>
+                                    <div style="margin-top: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                        <button id="btnRebootFastboot" class="btn btn-secondary btn-sm" onclick="rebootToFastboot()">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                                            <span>⚡ 1-Click Reboot to Fastboot (via ADB)</span>
+                                        </button>
+                                        <span style="font-size: 12px; color: var(--text-muted);">(No button presses needed if USB debugging is ON)</span>
+                                    </div>
+                                    <div style="margin-top: 6px; font-size: 12px; color: var(--text-muted);">
+                                        <em>(Alternative if powered off: hold <kbd>Power</kbd> + <kbd>Volume Up</kbd> ➔ navigate to <code>[Fastboot Mode]</code> with <kbd>Vol Up</kbd>, select with <kbd>Vol Down</kbd>).</em>
+                                    </div>
+                                </div>
                             </div>
                             <div class="timeline-item">
                                 <span class="timeline-marker">6</span>

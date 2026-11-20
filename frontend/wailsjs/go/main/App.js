@@ -14,6 +14,10 @@ export function EnsureTools() {
   return window['go']['main']['App']['EnsureTools']();
 }
 
+export function RebootToFastboot() {
+  return window['go']['main']['App']['RebootToFastboot']();
+}
+
 export function RunStep1_Root() {
   return window['go']['main']['App']['RunStep1_Root']();
 }

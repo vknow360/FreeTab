@@ -22,7 +22,18 @@ func (a *Actions) RunFastbootRoot(ctx context.Context) error {
 	}
 	defer cleanup()
 
-	// 2. Wait for Fastboot connection
+	// 2. Check if device is currently connected via ADB; if so, auto-reboot to Fastboot
+	if a.ADB != nil && a.ADB.ExePath != "" {
+		adbInfo := a.ADB.Detect(ctx)
+		if adbInfo.Connected {
+			a.log("Detected tablet connected via ADB (Android). Sending 'adb reboot bootloader'...")
+			_, _ = a.ADB.Run(ctx, "reboot", "bootloader")
+			a.log("  [..] Tablet is restarting into Fastboot mode...")
+			time.Sleep(4 * time.Second)
+		}
+	}
+
+	// 3. Wait for Fastboot connection
 	if err := a.Fastboot.WaitForDevice(ctx, 60*time.Second); err != nil {
 		return err
 	}

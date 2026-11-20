@@ -135,6 +135,30 @@ func (a *App) SelectDirectory(title string) (string, error) {
 	})
 }
 
+// RebootToFastboot reboots an ADB connected device into bootloader mode.
+func (a *App) RebootToFastboot() error {
+	a.runningMutex.Lock()
+	a.isBusy = true
+	defer func() {
+		a.isBusy = false
+		a.runningMutex.Unlock()
+	}()
+
+	if a.adb.ExePath == "" {
+		if _, err := a.EnsureTools(); err != nil {
+			return fmt.Errorf("adb tool unavailable: %w", err)
+		}
+	}
+
+	a.emitLog("[INFO] Sending command: adb reboot bootloader...")
+	_, err := a.adb.Run(a.ctx, "reboot", "bootloader")
+	if err != nil {
+		return fmt.Errorf("failed to reboot to bootloader: %w", err)
+	}
+	a.emitLog("[SUCCESS] Reboot command sent. Tablet is entering Fastboot mode...")
+	return nil
+}
+
 // RunStep1_Root executes Step 1 (Fastboot Unlock & Root).
 func (a *App) RunStep1_Root() error {
 	a.runningMutex.Lock()

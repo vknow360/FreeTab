@@ -260,6 +260,22 @@ function setButtonBusy(btnId, isBusy, busyText, normalText) {
     }
 }
 
+async function rebootToFastboot() {
+    if (isExecuting) return;
+    setButtonBusy("btnRebootFastboot", true, "Rebooting...", "<span>⚡ 1-Click Reboot to Fastboot (via ADB)</span>");
+
+    try {
+        appendLog("[START] Sending 'adb reboot bootloader' to tablet...");
+        await window.go.main.App.RebootToFastboot();
+        appendLog("[SUCCESS] Tablet is restarting into Fastboot mode. Waiting a few seconds...");
+    } catch (err) {
+        appendLog("[ERROR] Failed to reboot to Fastboot: " + err);
+    } finally {
+        setButtonBusy("btnRebootFastboot", false, "", "<span>⚡ 1-Click Reboot to Fastboot (via ADB)</span>");
+        refreshDeviceStatus();
+    }
+}
+
 async function runStep1() {
     if (isExecuting) return;
     setButtonBusy("btnRunStep1", true, "Executing Flash Routine...", "<span>Flash Unlock & Root Now</span>");
