@@ -1,4 +1,4 @@
-# 🚀 FreeTab v1.1 — Acer One 8 (T4-82L Gen 2) Toolkit
+# 🚀 FreeTab v1.2 — Acer One 8 (T4-82L Gen 2) Toolkit
 ### All-in-One Fastboot Root, Zero-Touch MDM Neutralizer & Performance Suite
 
 This enhanced toolkit provides an interactive launcher and individual 1-click scripts to unlock, root, permanently defeat the Tectoro / Google Zero-Touch MDM lock, and optimize any Acer One 8 tablet without technical hassle.
