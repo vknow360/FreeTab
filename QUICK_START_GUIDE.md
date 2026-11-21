@@ -1,7 +1,7 @@
 # FreeTab v1.2 — Acer One 8 (T4-82L Gen 2) Toolkit
 ### All-in-One Fastboot Root, Zero-Touch MDM Neutralizer & Performance Suite
 
-This toolkit provides an interactive launcher and automated steps to unlock, root, permanently defeat the Tectoro / Google Zero-Touch MDM lock, and optimize any Acer One 8 tablet without technical hassle.
+FreeTab is a standalone, all-in-one graphical desktop application engineered to unlock, root, permanently defeat Google Zero-Touch / Tectoro MDM locks, and optimize the Acer One 8 (T4-82L Gen 2) tablet. All actions are handled directly within the FreeTab graphical interface.
 
 ---
 
@@ -9,23 +9,13 @@ This toolkit provides an interactive launcher and automated steps to unlock, roo
 > **Do not connect to Wi-Fi until Step 2 (MDM Defense) is complete.**  
 > If the tablet connects to the internet before running the MDM defense, Google Zero-Touch will immediately download the enterprise profile and lock the tablet.
 > - **During setup wizard:** Choose **"Set up offline"** or **Skip**.
-> - **Keep Wi-Fi OFF** until the anti-MDM step confirms completion.
+> - **Keep Wi-Fi OFF** until the anti-MDM step confirms completion in FreeTab.
 
 ---
 
-## How to Use (Interactive Launcher or Scripts)
+## Launching FreeTab
 
-You can launch `FreeTab.exe` directly, run `Run_Toolkit.bat` for the terminal menu, or use the individual numbered scripts:
-
-```text
-Run_Toolkit.bat
-  [1] 1-Click Fastboot Unlock & Magisk Root
-  [2] Neutralize Zero-Touch / Tectoro MDM Lock
-  [3] Apply Performance Boost (0.5x Scale + Debloat)
-  [4] Full Guided Express Flow (Steps 1, 2 & 3 in sequence)
-  [5] Check Device Status & Diagnostics
-  [0] Exit Toolkit
-```
+Double-click **`FreeTab.exe`** on Windows. No command line, terminal scripts, or external dependencies are required. All flashing, device telemetry, rooting, and defense steps are fully automated inside the user interface.
 
 ---
 
@@ -43,9 +33,9 @@ Run_Toolkit.bat
    Verify the screen displays `=> FASTBOOT mode...`.
 4. Connect the USB-C cable to your computer.  
    *(On desktop PCs or AMD Ryzen systems, use a black USB 2.0 port or a USB 2.0 hub to ensure stable packet transfer).*
-5. In FreeTab, click **Flash Unlock & Root Now** (or run `Run_Toolkit.bat` option `[1]`).
+5. In FreeTab, navigate to **Step 1 (Unlock & Root)** and click **Flash Unlock & Root Now**.
 6. **Watch the tablet screen:** When prompted, press **Volume Up** once to confirm bootloader unlock.  
-   *(The tool automatically flashes root to slots A & B and reboots the tablet).*
+   *(FreeTab automatically flashes root to slots A & B and reboots the tablet).*
 
 ---
 
@@ -61,7 +51,7 @@ Run_Toolkit.bat
 ---
 
 ### Step 3: Defeat Zero-Touch MDM Lock
-1. In FreeTab (or Toolkit menu), run Stage **2A** to install the Magisk app.
+1. In FreeTab, navigate to **Step 2 (Defeat MDM Lock)** and click **2A: Install Magisk App**.
 2. Open the **Magisk** app on the tablet screen:
    * If prompted *"Requires Additional Setup"*, tap **OK** (the tablet reboots).
    * After reboot, open **Magisk** again -> tap **Superuser** (shield icon in the bottom navigation bar) -> toggle **Shell** to **ON**.
@@ -71,7 +61,7 @@ Run_Toolkit.bat
 ---
 
 ### Step 4: Apply Performance Boost (Optional)
-In FreeTab or the Toolkit menu, select **Step 3 (Performance Boost)**:
+In FreeTab, navigate to **Step 3 (Performance Boost)** and click **Apply Performance Boost**:
 * Sets animation scale to **0.5x** for immediate UI responsiveness.
 * Disables background telemetry and unneeded system packages.
 * Dismisses remaining setup wizard notifications.
