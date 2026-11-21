@@ -267,6 +267,13 @@ function renderDriverUI(report) {
     }
 }
 
+function toggleFastbootDriverHelp() {
+    const warning = document.getElementById("step1FastbootDriverWarning");
+    if (warning) {
+        warning.style.display = warning.style.display === "none" ? "flex" : "none";
+    }
+}
+
 async function openDeviceManager() {
     try {
         await window.go.main.App.OpenDeviceManager();
@@ -521,6 +528,10 @@ async function runStep1() {
         appendLog("[SUCCESS] Step 1 finished. Tablet is rebooting into Android.");
     } catch (err) {
         appendLog("[ERROR] Step 1 failed: " + err);
+        const step1FbWarning = document.getElementById("step1FastbootDriverWarning");
+        if (step1FbWarning) {
+            step1FbWarning.style.display = "flex";
+        }
     } finally {
         setButtonBusy("btnRunStep1", false, "", "<span>Flash Unlock & Root Now</span>");
         refreshDeviceStatus();
