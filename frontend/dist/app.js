@@ -310,16 +310,16 @@ async function runStep2A() {
 
 async function runStep2B() {
     if (isExecuting) return;
-    setButtonBusy("btnRunStep2B", true, "Waiting for Root Grant...", "<span>2B: Authorize Shell Root Permission</span>");
+    setButtonBusy("btnRunStep2B", true, "Verifying Root Grant...", "<span>2B: Confirm Shell Root Permission</span>");
 
     try {
-        appendLog("[START] Initiating Stage 2B: Triggering Superuser Request on tablet screen...");
+        appendLog("[START] Initiating Stage 2B: Verifying Shell root permission in Magisk...");
         await window.go.main.App.RunStep2B_AuthorizeRoot();
         appendLog("[SUCCESS] Stage 2B complete! Shell root access is confirmed. You can now run Stage 2C.");
     } catch (err) {
         appendLog("[ERROR] Stage 2B failed: " + err);
     } finally {
-        setButtonBusy("btnRunStep2B", false, "", "<span>2B: Authorize Shell Root Permission</span>");
+        setButtonBusy("btnRunStep2B", false, "", "<span>2B: Confirm Shell Root Permission</span>");
         refreshDeviceStatus();
     }
 }
