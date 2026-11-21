@@ -43,6 +43,9 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 
+	// Clean up any leftover .old binary from a previous auto-update
+	updater.CleanupOldBinary()
+
 	// Emit logs to Wails frontend event stream
 	logFunc := func(line string) {
 		wailsRuntime.EventsEmit(a.ctx, "log", line)

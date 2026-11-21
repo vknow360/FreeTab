@@ -99,3 +99,8 @@ func TestExtractExecutableFromZip(t *testing.T) {
 		t.Errorf("extracted content mismatch: got %s, expected %s", string(content), string(testData))
 	}
 }
+
+func TestCleanupOldBinary(t *testing.T) {
+	// Should execute without panicking even if no .old file exists
+	CleanupOldBinary()
+}

@@ -192,7 +192,7 @@ func CheckForUpdate(currentVersion string, logFn func(string)) (*UpdateInfo, err
 		info.UpdateAvailable = false
 		info.StatusMessage = fmt.Sprintf("FreeTab is up to date (v%s)", currentVersion)
 		if logFn != nil {
-			logFn(fmt.Sprintf("FreeTab is up to date (v%s)", currentVersion))
+			logFn(fmt.Sprintf("✓ FreeTab is up to date (v%s)", currentVersion))
 		}
 		return info, nil
 	}
@@ -377,6 +377,23 @@ func ReplaceExecutable(newBinaryPath string) error {
 	}
 
 	return nil
+}
+
+// CleanupOldBinary removes any leftover .old binary from a previous update.
+// Called on application startup when the previous process has exited and released the file lock.
+func CleanupOldBinary() {
+	execPath, err := os.Executable()
+	if err != nil {
+		return
+	}
+	execPath, err = filepath.EvalSymlinks(execPath)
+	if err != nil {
+		return
+	}
+	oldPath := execPath + ".old"
+	if _, err := os.Stat(oldPath); err == nil {
+		_ = os.Remove(oldPath)
+	}
 }
 
 // RestartApp restarts the updated executable and exits the current process.
