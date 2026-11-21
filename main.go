@@ -18,7 +18,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:             "FreeTab v1.2 — Acer One 8 Toolkit",
+		Title:             "FreeTab v1.3 — Acer One 8 Toolkit",
 		Width:             1150,
 		Height:            780,
 		MinWidth:          950,

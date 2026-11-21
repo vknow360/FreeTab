@@ -1,4 +1,4 @@
-# FreeTab v1.2 — Acer One 8 (T4-82L Gen 2) Toolkit
+# FreeTab v1.3 — Acer One 8 (T4-82L Gen 2) Toolkit
 ### All-in-One Fastboot Root, Zero-Touch MDM Neutralizer & Performance Suite
 
 FreeTab is a standalone, all-in-one graphical desktop application engineered to unlock, root, permanently defeat Google Zero-Touch / Tectoro MDM locks, and optimize the Acer One 8 (T4-82L Gen 2) tablet. All actions are handled directly within the FreeTab graphical interface.

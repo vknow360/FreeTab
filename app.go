@@ -14,7 +14,7 @@ import (
 	wailsRuntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
-const AppVersion = "1.2"
+const AppVersion = "1.3"
 
 // Overall device status sent to UI
 type DeviceState struct {

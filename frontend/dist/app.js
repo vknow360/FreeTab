@@ -333,17 +333,17 @@ async function checkForUpdates(manual = false) {
             }
         } else {
             if (pill) {
-                pill.textContent = "v" + (info && info.currentVersion ? info.currentVersion : "1.2");
+                pill.textContent = "v" + (info && info.currentVersion ? info.currentVersion : "1.3");
                 pill.className = "badge-status badge-neutral";
             }
             hideUpdateBanner();
             if (manual) {
-                appendLog(`[INFO] FreeTab is up to date (v${info && info.currentVersion ? info.currentVersion : "1.2"}).`);
+                appendLog(`[INFO] FreeTab is up to date (v${info && info.currentVersion ? info.currentVersion : "1.3"}).`);
             }
         }
     } catch (err) {
         if (pill) {
-            pill.textContent = "v1.2";
+            pill.textContent = "v1.3";
             pill.className = "badge-status badge-neutral";
         }
         if (manual) {
