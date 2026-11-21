@@ -153,6 +153,11 @@ func (a *App) RestartApp() error {
 	return updater.RestartApp()
 }
 
+// OpenCredits opens the original repository in the user's default browser.
+func (a *App) OpenCredits() {
+	wailsRuntime.BrowserOpenURL(a.ctx, "https://github.com/codeturbulent/Acerone8_")
+}
+
 // DetectDevice queries connection status across ADB and Fastboot.
 func (a *App) DetectDevice() DeviceState {
 	state := DeviceState{Mode: "disconnected"}

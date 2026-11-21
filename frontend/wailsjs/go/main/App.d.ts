@@ -18,6 +18,8 @@ export function GetAppVersion():Promise<string>;
 
 export function InstallUpdate(arg1:string,arg2:string):Promise<void>;
 
+export function OpenCredits():Promise<void>;
+
 export function OpenDeviceManager():Promise<void>;
 
 export function OpenDriverDownload():Promise<void>;

@@ -391,6 +391,16 @@ async function restartApp() {
     }
 }
 
+function openCredits() {
+    if (window.go && window.go.main && window.go.main.App && window.go.main.App.OpenCredits) {
+        window.go.main.App.OpenCredits();
+    } else if (window.runtime && window.runtime.BrowserOpenURL) {
+        window.runtime.BrowserOpenURL("https://github.com/codeturbulent/Acerone8_");
+    } else {
+        window.open("https://github.com/codeturbulent/Acerone8_", "_blank");
+    }
+}
+
 // -----------------------------------------------------------------------------
 // Precision Console Engine
 // -----------------------------------------------------------------------------

@@ -87,6 +87,11 @@ FreeTab includes automatic, zero-permission Windows USB driver diagnostics in th
 
 ---
 
+## 🙏 Credits & Acknowledgments
+Special credit to **[codeturbulent/Acerone8_](https://github.com/codeturbulent/Acerone8_)** for the original foundation scripts, partition analysis, and fastboot rooting workflow for the Acer One 8 (T4-82L Gen 2).
+
+---
+
 ## 🛟 Emergency Recovery Cheat Sheet
 
 * **Hard Power Off (If ever stuck in a reboot loop):**  

@@ -138,6 +138,14 @@ Go to your repository's **Actions** tab ➔ select **FreeTab Windows Build** ➔
 
 ---
 
+## 🙏 Credits & Acknowledgments
+
+- **Original Foundation Scripts & Research:** Special credit and thanks to **[codeturbulent/Acerone8_](https://github.com/codeturbulent/Acerone8_)** for the original shell scripts and device research for the Acer One 8 (T4-82L Gen 2).
+- **Root Implementation:** [topjohnwu/Magisk](https://github.com/topjohnwu/Magisk) for Magisk and GKI boot patching.
+- **GUI Engine:** [Wails v2](https://wails.io) for the high-performance Go + WebView2 desktop framework.
+
+---
+
 ## ⚖️ License & Disclaimer
 
 - **License**: Released under the [MIT License](LICENSE).

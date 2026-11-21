@@ -30,6 +30,10 @@ export function InstallUpdate(arg1, arg2) {
   return window['go']['main']['App']['InstallUpdate'](arg1, arg2);
 }
 
+export function OpenCredits() {
+  return window['go']['main']['App']['OpenCredits']();
+}
+
 export function OpenDeviceManager() {
   return window['go']['main']['App']['OpenDeviceManager']();
 }
