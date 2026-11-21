@@ -66,10 +66,11 @@ func (a *Actions) AuthorizeShellRoot(ctx context.Context) error {
 
 	if strings.Contains(idOut, "uid=0") {
 		a.log("  ✓ Shell root is ALREADY authorized! (uid=0)")
+		a.log("  ✓ No prompt was shown because Magisk already granted permanent root to Shell.")
 		// Ensure SQLite policy is set
 		_, _ = a.ADB.Shell(ctx, `su -c 'magisk --sqlite "REPLACE INTO policies (uid,policy,until,logging,notification) VALUES (2000,2,0,1,1);"'`)
 		a.log("\n==========================================================================")
-		a.log("✓ ROOT VERIFIED! You can now proceed to [Stage 2C: Neutralize MDM]!")
+		a.log("✓ ROOT VERIFIED! You can now proceed directly to [Stage 2C: Neutralize MDM]!")
 		a.log("==========================================================================")
 		return nil
 	}
@@ -80,12 +81,16 @@ func (a *Actions) AuthorizeShellRoot(ctx context.Context) error {
 	_, _ = a.ADB.Shell(ctx, "monkey -p com.topjohnwu.magisk -c android.intent.category.LAUNCHER 1")
 
 	a.log("\n--------------------------------------------------------------------------")
-	a.log("👉 LOOK AT YOUR TABLET SCREEN NOW:")
-	a.log("   A popup 'Superuser Request' from 'Shell' will appear.")
-	a.log("   👉 Tap 'GRANT' or 'ALLOW' to authorize permanent root access!")
-	a.log("   (Or inside Magisk Settings: set 'Superuser Access' to 'Apps and ADB')")
+	a.log("👉 ACTION ON TABLET SCREEN:")
+	a.log("   If a 'Superuser Request' popup appears: Tap 'GRANT' or 'ALLOW'.")
+	a.log("")
+	a.log("   ⚠️ IF NO PROMPT APPEARS (Magisk default setting blocks ADB by default):")
+	a.log("   1. Open Magisk on your tablet.")
+	a.log("   2. Tap the ⚙️ Settings gear icon in the top-right corner.")
+	a.log("   3. Scroll down to 'Superuser' section.")
+	a.log("   4. Tap 'Superuser Access' and change it from 'Apps only' to 'Apps and ADB'.")
 	a.log("--------------------------------------------------------------------------")
-	a.log("  [..] Waiting for you to tap GRANT on tablet screen...\n")
+	a.log("  [..] Waiting for root authorization...\n")
 
 	// Trigger `su` asynchronously or in a loop
 	granted := false
@@ -96,15 +101,16 @@ func (a *Actions) AuthorizeShellRoot(ctx context.Context) error {
 			granted = true
 			break
 		}
-		// Every 10 seconds re-trigger monkey / su
+		// Every 10 seconds re-trigger monkey / su and show status
 		if i > 0 && i%10 == 0 {
-			a.log("  [..] Still waiting for root grant on tablet screen...")
+			a.log(fmt.Sprintf("  [..] Still waiting (%ds/60s)... Last response: %s", 60-i, strings.TrimSpace(check)))
+			a.log("       Remember: In Magisk Settings (⚙️), set 'Superuser Access' to 'Apps and ADB'")
 			_, _ = a.ADB.Shell(ctx, "monkey -p com.topjohnwu.magisk -c android.intent.category.LAUNCHER 1")
 		}
 	}
 
 	if !granted {
-		return fmt.Errorf("root access was not granted within 60 seconds. Please open Magisk on your tablet, tap GRANT, or set Superuser Access to 'Apps and ADB' in Magisk Settings, then click 2B again")
+		return fmt.Errorf("root access was not granted within 60 seconds. On your tablet: Open Magisk > Settings (⚙️) > Superuser Access > Select 'Apps and ADB', then click 2B again")
 	}
 
 	a.log("  ✓ Superuser permission GRANTED: uid=0 confirmed!")
