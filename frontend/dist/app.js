@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkTools();
     checkDrivers();
     refreshDeviceStatus();
+    checkForUpdates(false);
 });
 
 // -----------------------------------------------------------------------------
@@ -279,6 +280,114 @@ async function openDriverDownload() {
         await window.go.main.App.OpenDriverDownload();
     } catch (e) {
         appendLog("[ERROR] Could not open driver download: " + e);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// GitHub Auto-Update Engine
+// -----------------------------------------------------------------------------
+let cachedUpdateInfo = null;
+
+async function checkForUpdates(manual = false) {
+    if (!window.go || !window.go.main || !window.go.main.App) return;
+
+    const pill = document.getElementById("updateStatusPill");
+    if (pill) {
+        pill.textContent = "Checking...";
+        pill.className = "badge-status badge-neutral";
+    }
+
+    try {
+        const info = await window.go.main.App.CheckForUpdates();
+        cachedUpdateInfo = info;
+
+        if (info && info.updateAvailable) {
+            if (pill) {
+                pill.textContent = "v" + info.latestVersion + " Available";
+                pill.className = "badge-status badge-success";
+            }
+            showUpdateBanner(info);
+            if (manual) {
+                appendLog(`[INFO] New update available: v${info.currentVersion} → v${info.latestVersion} (${info.releaseName || "Latest Release"})`);
+            }
+        } else {
+            if (pill) {
+                pill.textContent = "v" + (info && info.currentVersion ? info.currentVersion : "1.1");
+                pill.className = "badge-status badge-neutral";
+            }
+            hideUpdateBanner();
+            if (manual) {
+                appendLog(`[INFO] FreeTab is up to date (v${info && info.currentVersion ? info.currentVersion : "1.1"}).`);
+            }
+        }
+    } catch (err) {
+        if (pill) {
+            pill.textContent = "v1.1";
+            pill.className = "badge-status badge-neutral";
+        }
+        if (manual) {
+            appendLog("[WARN] Could not check for updates: " + err);
+        }
+    }
+}
+
+function showUpdateBanner(info) {
+    const banner = document.getElementById("updateBanner");
+    const desc = document.getElementById("updateBannerDesc");
+    if (!banner) return;
+
+    if (desc) {
+        desc.textContent = `Version v${info.latestVersion} is available to install.`;
+    }
+    banner.style.display = "flex";
+}
+
+function hideUpdateBanner() {
+    const banner = document.getElementById("updateBanner");
+    if (banner) {
+        banner.style.display = "none";
+    }
+}
+
+function dismissUpdateBanner() {
+    hideUpdateBanner();
+}
+
+async function applyUpdate() {
+    if (!cachedUpdateInfo || !cachedUpdateInfo.downloadUrl) {
+        appendLog("[ERROR] No valid update download URL found.");
+        return;
+    }
+
+    const btn = document.getElementById("btnApplyUpdate");
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Downloading & Installing...";
+    }
+
+    appendLog(`[INFO] Starting auto-upgrade to v${cachedUpdateInfo.latestVersion}...`);
+    try {
+        await window.go.main.App.InstallUpdate(cachedUpdateInfo.downloadUrl, cachedUpdateInfo.assetName);
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Restart FreeTab Now";
+            btn.onclick = restartApp;
+        }
+        appendLog("[SUCCESS] Upgrade completed! Click 'Restart FreeTab Now' to launch the new version.");
+    } catch (err) {
+        appendLog("[ERROR] Auto-update failed: " + err);
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Retry Update";
+        }
+    }
+}
+
+async function restartApp() {
+    try {
+        await window.go.main.App.RestartApp();
+    } catch (err) {
+        appendLog("[ERROR] Failed to restart application: " + err);
     }
 }
 

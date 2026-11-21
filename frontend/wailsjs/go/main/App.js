@@ -6,6 +6,10 @@ export function CheckDrivers() {
   return window['go']['main']['App']['CheckDrivers']();
 }
 
+export function CheckForUpdates() {
+  return window['go']['main']['App']['CheckForUpdates']();
+}
+
 export function CheckTools() {
   return window['go']['main']['App']['CheckTools']();
 }
@@ -18,6 +22,14 @@ export function EnsureTools() {
   return window['go']['main']['App']['EnsureTools']();
 }
 
+export function GetAppVersion() {
+  return window['go']['main']['App']['GetAppVersion']();
+}
+
+export function InstallUpdate(arg1, arg2) {
+  return window['go']['main']['App']['InstallUpdate'](arg1, arg2);
+}
+
 export function OpenDeviceManager() {
   return window['go']['main']['App']['OpenDeviceManager']();
 }
@@ -28,6 +40,10 @@ export function OpenDriverDownload() {
 
 export function RebootToFastboot() {
   return window['go']['main']['App']['RebootToFastboot']();
+}
+
+export function RestartApp() {
+  return window['go']['main']['App']['RestartApp']();
 }
 
 export function RunStep1_Root() {

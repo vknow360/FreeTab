@@ -87,6 +87,10 @@
                     <span class="meta-label">USB DRIVERS</span>
                     <span id="driversStatusPill" class="badge-status badge-neutral">Checking...</span>
                 </button>
+                <button id="btnCheckUpdate" class="meta-row" onclick="checkForUpdates(true)" title="Check for GitHub Updates" style="margin-top: 6px;">
+                    <span class="meta-label">UPDATE</span>
+                    <span id="updateStatusPill" class="badge-status badge-neutral">v1.1</span>
+                </button>
             </div>
         </aside>
 
@@ -118,6 +122,29 @@
                     </button>
                 </div>
             </header>
+
+            <!-- Update Available Notification Banner -->
+            <div id="updateBanner" class="notice-strip notice-success" style="display: none; margin: 14px 24px 0 24px; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <div class="notice-body">
+                        <strong id="updateBannerTitle">🎉 Update Available!</strong>
+                        <span id="updateBannerDesc" style="margin-left: 8px; font-size: 13px; opacity: 0.9;"></span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <button id="btnApplyUpdate" class="btn btn-primary btn-sm" onclick="applyUpdate()">
+                        Update Now
+                    </button>
+                    <button class="btn btn-secondary btn-sm" onclick="dismissUpdateBanner()" title="Dismiss">
+                        ✕
+                    </button>
+                </div>
+            </div>
 
             <!-- Dynamic Views Container -->
             <main class="viewport">

@@ -160,7 +160,7 @@ func CheckWindowsDrivers() *DriverReport {
 		!report.ProblemFound
 
 	if report.Ready {
-		report.Summary = "✓ Windows USB Drivers are installed and healthy (ADB & Fastboot ready)."
+		report.Summary = "Windows USB Drivers are installed and healthy (ADB & Fastboot ready)."
 	} else if report.ProblemFound {
 		report.Summary = "⚠️ Driver installation error detected (Code 28 - Yellow exclamation in Device Manager)."
 		report.ActionNeeded = "Fastboot/ADB driver is missing. Download Google USB Driver and update driver in Device Manager."

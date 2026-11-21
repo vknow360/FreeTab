@@ -9,9 +9,12 @@ import (
 
 	"freetab/internal/actions"
 	"freetab/internal/device"
+	"freetab/internal/updater"
 
 	wailsRuntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
+
+const AppVersion = "1.1"
 
 // Overall device status sent to UI
 type DeviceState struct {
@@ -125,6 +128,26 @@ func (a *App) OpenDeviceManager() error {
 // OpenDriverDownload opens the official Google USB Driver download URL in the default browser.
 func (a *App) OpenDriverDownload() {
 	wailsRuntime.BrowserOpenURL(a.ctx, device.GoogleUSBDriverURL)
+}
+
+// GetAppVersion returns the current FreeTab application version.
+func (a *App) GetAppVersion() string {
+	return AppVersion
+}
+
+// CheckForUpdates checks GitHub releases for updates.
+func (a *App) CheckForUpdates() (*updater.UpdateInfo, error) {
+	return updater.CheckForUpdate(AppVersion, a.emitLog)
+}
+
+// InstallUpdate downloads and replaces the running binary with the latest release.
+func (a *App) InstallUpdate(downloadURL, assetName string) error {
+	return updater.DownloadAndInstall(downloadURL, assetName, a.emitLog)
+}
+
+// RestartApp relaunches the updated FreeTab application.
+func (a *App) RestartApp() error {
+	return updater.RestartApp()
 }
 
 // DetectDevice queries connection status across ADB and Fastboot.
