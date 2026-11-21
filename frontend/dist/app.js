@@ -283,6 +283,20 @@ async function openDriverDownload() {
     }
 }
 
+async function openUniversalDriverDownload() {
+    try {
+        if (window.go && window.go.main && window.go.main.App && window.go.main.App.OpenUniversalDriverDownload) {
+            await window.go.main.App.OpenUniversalDriverDownload();
+        } else if (window.runtime && window.runtime.BrowserOpenURL) {
+            window.runtime.BrowserOpenURL("https://adb.clockworkmod.com/");
+        } else {
+            window.open("https://adb.clockworkmod.com/", "_blank");
+        }
+    } catch (e) {
+        appendLog("[ERROR] Could not open universal driver download: " + e);
+    }
+}
+
 // -----------------------------------------------------------------------------
 // GitHub Auto-Update Engine
 // -----------------------------------------------------------------------------

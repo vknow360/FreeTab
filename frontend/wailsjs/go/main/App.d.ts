@@ -24,6 +24,8 @@ export function OpenDeviceManager():Promise<void>;
 
 export function OpenDriverDownload():Promise<void>;
 
+export function OpenUniversalDriverDownload():Promise<void>;
+
 export function RebootToFastboot():Promise<void>;
 
 export function RestartApp():Promise<void>;

@@ -10,8 +10,6 @@ import (
 	"golang.org/x/sys/windows/registry"
 )
 
-const GoogleUSBDriverURL = "https://dl.google.com/android/repository/usb_driver_r13-windows.zip"
-
 // CheckWindowsDrivers scans the Windows Registry and Driver Store to verify ADB, Fastboot, and MTK drivers.
 func CheckWindowsDrivers() *DriverReport {
 	report := &DriverReport{
@@ -160,16 +158,16 @@ func CheckWindowsDrivers() *DriverReport {
 		!report.ProblemFound
 
 	if report.Ready {
-		report.Summary = "Windows USB Drivers are installed and healthy (ADB & Fastboot ready)."
+		report.Summary = "Windows USB Drivers are installed and operational (ADB and Fastboot ready)."
 	} else if report.ProblemFound {
-		report.Summary = "⚠️ Driver installation error detected (Code 28 - Yellow exclamation in Device Manager)."
-		report.ActionNeeded = "Fastboot/ADB driver is missing. Download Google USB Driver and update driver in Device Manager."
+		report.Summary = "Device driver requires attention (Code 28 in Windows Device Manager)."
+		report.ActionNeeded = "In Device Manager, update the unconfigured device. For Fastboot, select 'Android Bootloader Interface' (do not use Add Legacy Hardware). For ADB, install Universal ADB or MediaTek drivers."
 	} else if !report.FastbootDriver.Installed {
-		report.Summary = "⚠️ Fastboot Driver (Android Bootloader Interface) not detected in Windows Driver Store."
-		report.ActionNeeded = "Install the official Google USB Driver so Windows recognizes the tablet in Fastboot mode."
+		report.Summary = "Fastboot Driver (Android Bootloader Interface) not detected in Windows Driver Store."
+		report.ActionNeeded = "Install the Android Bootloader Interface driver via Device Manager or Universal ADB Driver."
 	} else {
-		report.Summary = "⚠️ ADB or Fastboot drivers could not be verified in Windows Driver Store."
-		report.ActionNeeded = "Please install the Google USB Driver before flashing."
+		report.Summary = "ADB or Fastboot drivers could not be verified in Windows Driver Store."
+		report.ActionNeeded = "Install the Google USB Driver or Universal ADB Driver before flashing."
 	}
 
 	return report

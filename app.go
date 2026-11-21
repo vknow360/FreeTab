@@ -112,11 +112,11 @@ func (a *App) EnsureTools() (device.ToolPaths, error) {
 func (a *App) CheckDrivers() *device.DriverReport {
 	report := device.CheckWindowsDrivers()
 	if report.Ready {
-		a.emitLog("✓ " + report.Summary)
+		a.emitLog("[INFO] " + report.Summary)
 	} else {
-		a.emitLog("⚠️ " + report.Summary)
+		a.emitLog("[WARN] " + report.Summary)
 		if report.ActionNeeded != "" {
-			a.emitLog("  👉 Action: " + report.ActionNeeded)
+			a.emitLog("[WARN] Action: " + report.ActionNeeded)
 		}
 	}
 	return report
@@ -131,6 +131,11 @@ func (a *App) OpenDeviceManager() error {
 // OpenDriverDownload opens the official Google USB Driver download URL in the default browser.
 func (a *App) OpenDriverDownload() {
 	wailsRuntime.BrowserOpenURL(a.ctx, device.GoogleUSBDriverURL)
+}
+
+// OpenUniversalDriverDownload opens the Universal ADB Driver download URL in the default browser.
+func (a *App) OpenUniversalDriverDownload() {
+	wailsRuntime.BrowserOpenURL(a.ctx, device.UniversalDriverURL)
 }
 
 // GetAppVersion returns the current FreeTab application version.

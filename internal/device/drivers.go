@@ -1,5 +1,10 @@
 package device
 
+const (
+	GoogleUSBDriverURL = "https://dl.google.com/android/repository/usb_driver_r13-windows.zip"
+	UniversalDriverURL = "https://adb.clockworkmod.com/"
+)
+
 // DriverItem represents the diagnostic state of an individual USB driver.
 type DriverItem struct {
 	Name       string `json:"name"`

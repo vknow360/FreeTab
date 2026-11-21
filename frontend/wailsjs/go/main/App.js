@@ -42,6 +42,10 @@ export function OpenDriverDownload() {
   return window['go']['main']['App']['OpenDriverDownload']();
 }
 
+export function OpenUniversalDriverDownload() {
+  return window['go']['main']['App']['OpenUniversalDriverDownload']();
+}
+
 export function RebootToFastboot() {
   return window['go']['main']['App']['RebootToFastboot']();
 }

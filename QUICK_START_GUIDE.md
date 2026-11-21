@@ -1,106 +1,131 @@
-# 🚀 FreeTab v1.2 — Acer One 8 (T4-82L Gen 2) Toolkit
+# FreeTab v1.2 — Acer One 8 (T4-82L Gen 2) Toolkit
 ### All-in-One Fastboot Root, Zero-Touch MDM Neutralizer & Performance Suite
 
-This enhanced toolkit provides an interactive launcher and individual 1-click scripts to unlock, root, permanently defeat the Tectoro / Google Zero-Touch MDM lock, and optimize any Acer One 8 tablet without technical hassle.
+This toolkit provides an interactive launcher and automated steps to unlock, root, permanently defeat the Tectoro / Google Zero-Touch MDM lock, and optimize any Acer One 8 tablet without technical hassle.
 
 ---
 
-## ⚠️ THE GOLDEN RULE
-> ### 🛑 DO NOT CONNECT TO WI-FI UNTIL STEP 2 (MDM DEFENSE) IS COMPLETE!
-> If the tablet connects to the internet before running the MDM defense, Google Zero-Touch will immediately download the enterprise profile and lock the tablet with a wipe countdown.
+## Mandatory Requirement: Keep Wi-Fi Off
+> **Do not connect to Wi-Fi until Step 2 (MDM Defense) is complete.**  
+> If the tablet connects to the internet before running the MDM defense, Google Zero-Touch will immediately download the enterprise profile and lock the tablet.
 > - **During setup wizard:** Choose **"Set up offline"** or **Skip**.
-> - **Keep Wi-Fi OFF** until the anti-MDM step confirms `🎉 SUCCESS`.
+> - **Keep Wi-Fi OFF** until the anti-MDM step confirms completion.
 
 ---
 
-## 🎮 How to Use (Interactive Launcher or 1-Click Scripts)
+## How to Use (Interactive Launcher or Scripts)
 
-You can simply double-click **`Run_Toolkit.bat`** to get the full interactive menu, or use the numbered standalone scripts:
+You can launch `FreeTab.exe` directly, run `Run_Toolkit.bat` for the terminal menu, or use the individual numbered scripts:
 
 ```text
 Run_Toolkit.bat
-  [1] ⚡ 1-Click Fastboot Unlock & Magisk Root
-  [2] 🛡️  Neutralize Zero-Touch / Tectoro MDM Lock
-  [3] 🚀 Apply Extreme Performance Boost (0.5x Scale + Debloat)
-  [4] 🔄 Full Guided Express Flow (Steps 1, 2 & 3 in sequence)
-  [5] 🛟 Check Device Status & Diagnostics
-  [0] ❌ Exit Toolkit
+  [1] 1-Click Fastboot Unlock & Magisk Root
+  [2] Neutralize Zero-Touch / Tectoro MDM Lock
+  [3] Apply Performance Boost (0.5x Scale + Debloat)
+  [4] Full Guided Express Flow (Steps 1, 2 & 3 in sequence)
+  [5] Check Device Status & Diagnostics
+  [0] Exit Toolkit
 ```
 
 ---
 
-## 📋 The 10-Minute Workflow for Any New Tablet:
+## Guided Workflow for New Tablets
 
-### Step 1: Unlock Bootloader & Flash Root (2 Minutes)
-1. Power OFF the tablet completely.
-2. Hold **Power + Volume UP** until the small boot menu appears.
-3. Select **`[Fastboot Mode]`** with Volume Down.
-4. Plug in the USB cable to your PC.
-5. Double-click **`Run_Toolkit.bat`** and select **`[1]`** (or double-click **`1_Fastboot_Root.bat`**).
-6. ⚠️ **LOOK AT TABLET SCREEN:** Press **Volume UP** once to confirm bootloader unlock.  
-   *(The script flashes root and reboots the tablet automatically).*
+### Step 1: Unlock Bootloader & Flash Root
+1. Power off the tablet completely.
+2. Hold **Power + Volume Up** until the boot selection menu appears:
+   ```text
+   [Recovery Mode]
+   [Fastboot Mode]  <<==
+   [Normal Boot]
+   ```
+3. Press **Volume Up** to point the arrow at `[Fastboot Mode]`, then press **Volume Down** to select it.  
+   Verify the screen displays `=> FASTBOOT mode...`.
+4. Connect the USB-C cable to your computer.  
+   *(On desktop PCs or AMD Ryzen systems, use a black USB 2.0 port or a USB 2.0 hub to ensure stable packet transfer).*
+5. In FreeTab, click **Flash Unlock & Root Now** (or run `Run_Toolkit.bat` option `[1]`).
+6. **Watch the tablet screen:** When prompted, press **Volume Up** once to confirm bootloader unlock.  
+   *(The tool automatically flashes root to slots A & B and reboots the tablet).*
 
 ---
 
-### Step 2: Offline Setup & Enable USB Debugging (1 Minute)
+### Step 2: Offline Setup & Enable USB Debugging
 1. When the tablet reboots, complete the Android setup wizard:
-   * **DO NOT CONNECT TO WI-FI!** Select **"Set up offline"** / **Skip**.
+   * **Do not connect to Wi-Fi.** Choose **"Set up offline"** or **Skip**.
 2. Enable Developer Options:
    * Open **Settings > About tablet** -> Tap **Build number** 7 times.
 3. Enable USB Debugging:
    * Open **Settings > System > Developer options** -> Toggle **USB debugging** to **ON**.
-4. Plug into PC and tap **"Always allow from this computer"** on the tablet screen.
+4. Connect to PC and tap **"Always allow from this computer"** on the tablet screen.
 
 ---
 
-### Step 3: Defeat Zero-Touch MDM Lock (2 Minutes)
-1. In FreeTab (or Toolkit menu), run Stage **2A** to install Magisk app.
-2. Open the **Magisk** app on your tablet screen:
-   * If it prompts *"Requires Additional Setup"*, tap **OK** (it reboots).
-   * After reboot, open **Magisk** again -> tap **Superuser** (shield icon in bottom navigation bar) -> toggle **Shell** to **ON**.
-3. In FreeTab, click **2B: Confirm Shell Root Permission** to verify.
+### Step 3: Defeat Zero-Touch MDM Lock
+1. In FreeTab (or Toolkit menu), run Stage **2A** to install the Magisk app.
+2. Open the **Magisk** app on the tablet screen:
+   * If prompted *"Requires Additional Setup"*, tap **OK** (the tablet reboots).
+   * After reboot, open **Magisk** again -> tap **Superuser** (shield icon in the bottom navigation bar) -> toggle **Shell** to **ON**.
+3. In FreeTab, click **2B: Confirm Shell Root Permission** to verify access.
 4. Click **2C: Execute Anti-MDM Defense** to permanently neutralize Zero-Touch and apply kernel firewall protection.
 
 ---
 
-### Step 4: Apply 1-Click Performance Boost (30 Seconds)
-In the Toolkit menu, select **`[3]`** (or double-click **`3_Performance_Boost.bat`**).
-* Cuts animation scale to **0.5x** (instant 2x UI speed).
-* Disables useless background telemetry & bloatware (~800 MB RAM freed).
-* Finalizes and dismisses lingering setup wizard notifications.
+### Step 4: Apply Performance Boost (Optional)
+In FreeTab or the Toolkit menu, select **Step 3 (Performance Boost)**:
+* Sets animation scale to **0.5x** for immediate UI responsiveness.
+* Disables background telemetry and unneeded system packages.
+* Dismisses remaining setup wizard notifications.
 
 ---
 
-### Step 5: You Are Done!
-* **Turn Wi-Fi ON.**
-* Add your Google account.
-* Use your tablet as a fast, clean, personal device!
+### Step 5: Setup Complete
+* Turn Wi-Fi ON.
+* Add your personal Google account.
+* Use your tablet freely.
 
 ---
 
-## 🔌 Windows USB Driver Diagnostics
-FreeTab includes automatic, zero-permission Windows USB driver diagnostics in the left sidebar and main dashboard:
-- **ADB Interface (`WinUSB` / `androidusb`):** Required during Android runtime for MDM defense and performance optimization.
-- **Fastboot Interface (`WinUSB`):** Crucial for Step 1 bootloader unlocking and kernel flashing.
-- **MediaTek Preloader:** Fallback port for MTK factory recovery.
-- If FreeTab flags missing drivers or a **Code 28** error in Device Manager, click **"Download Google USB Driver"** or **"Open Device Manager"** right from the FreeTab UI.
+## Windows USB Driver & Fastboot Troubleshooting
+
+If your tablet is not detected in Fastboot mode or ADB mode, follow these verified driver configurations:
+
+### 1. Fastboot Mode Recognition (Resolving `< waiting for any device >`)
+When the tablet enters Fastboot mode, its hardware ID changes to `USB\VID_18D1&PID_4EE0` (Google Android Bootloader Interface).
+
+* **Check Device Manager (`devmgmt.msc`):**
+  When connected in Fastboot mode, look for an entry named **`Android`** under **Other devices** with a warning icon.
+* **Install the Correct Driver:**
+  1. Right-click **`Android`** under Other devices -> select **Update driver**.
+  2. Select **Browse my computer for drivers** -> **Let me pick from a list of available drivers on my computer**.
+  3. Select **Android Device** (or Show All Devices) -> click Next.
+  4. Under Model, select **Android Bootloader Interface** (do **not** select "Android ADB Interface").
+  5. Click Next and confirm the installation warning.
+* **Do Not Use "Add Legacy Hardware":**
+  Using *Action -> Add legacy hardware* creates a virtual phantom device disconnected from the physical USB bus. Windows will fail to start it with **Code 10** (`This device cannot start`). Always update the real hardware device under Other devices.
+* **USB 3.0 / AMD Ryzen Motherboard Issue:**
+  MediaTek Helio G85 bootloaders frequently fail USB packet handshakes on blue or red USB 3.0/3.1 ports. Connect the tablet to a black **USB 2.0 port** or use an external USB 2.0 hub.
+
+### 2. Android OS Mode (ADB USB Debugging)
+* In normal booted Android OS, the tablet presents a MediaTek hardware ID (`USB\VID_0E8D&PID_201C`).
+* The standard Google USB Driver inf file does not include `VID_0E8D` by default and will report no compatible drivers found.
+* **Recommended Driver:** Install the **[Universal ADB Driver](https://adb.clockworkmod.com/)** (by Koushik Dutta) or the MediaTek USB Driver package. These packages support both MediaTek ADB (`VID_0E8D`) and Google Fastboot (`VID_18D1`).
 
 ---
 
-## 🙏 Credits & Acknowledgments
+## Credits & Acknowledgments
 Special credit to **[codeturbulent/Acerone8_](https://github.com/codeturbulent/Acerone8_)** for the original foundation scripts, partition analysis, and fastboot rooting workflow for the Acer One 8 (T4-82L Gen 2).
 
 ---
 
-## 🛟 Emergency Recovery Cheat Sheet
+## Hardware Recovery Cheat Sheet
 
-* **Hard Power Off (If ever stuck in a reboot loop):**  
+* **Hard Power Off (Stuck in Bootloop):**  
   Unplug USB, then hold **Power + Volume Up + Volume Down** simultaneously for 15 seconds.
 * **Boot Selection Menu:**  
   Hold **Power + Volume Up** while powered off.
 * **Factory Reset (Format Data):**  
   Hold **Power + Volume Down** while powered off -> select **`Clear Storage`**.
-* **Restore 100% Stock Backup:**  
+* **Restore Stock Backup:**  
   In fastbootd (`fastboot reboot fastboot`):
   ```powershell
   fastboot flash system tablet_backup\stock_system.img
