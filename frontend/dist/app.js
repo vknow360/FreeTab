@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
     initSubscriptions();
     checkTools();
+    checkDrivers();
     refreshDeviceStatus();
 });
 
@@ -177,6 +178,107 @@ async function ensureTools() {
         pill.textContent = "Failed";
         pill.className = "badge-status badge-danger";
         appendLog("[ERROR] Failed to download platform-tools: " + err);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Driver Diagnostics Check
+// -----------------------------------------------------------------------------
+let cachedDriverReport = null;
+
+async function checkDrivers() {
+    if (!window.go || !window.go.main || !window.go.main.App) return;
+
+    const pill = document.getElementById("driversStatusPill");
+    if (pill) {
+        pill.textContent = "Scanning...";
+        pill.className = "badge-status badge-neutral";
+    }
+
+    try {
+        const report = await window.go.main.App.CheckDrivers();
+        cachedDriverReport = report;
+        renderDriverUI(report);
+    } catch (err) {
+        if (pill) {
+            pill.textContent = "Error";
+            pill.className = "badge-status badge-danger";
+        }
+        appendLog("[ERROR] Driver diagnostic failed: " + err);
+    }
+}
+
+function renderDriverUI(report) {
+    const pill = document.getElementById("driversStatusPill");
+    if (pill) {
+        if (report.ready) {
+            pill.textContent = "Drivers OK";
+            pill.className = "badge-status badge-success";
+        } else if (report.problemFound) {
+            pill.textContent = "Driver Error";
+            pill.className = "badge-status badge-danger";
+        } else {
+            pill.textContent = "Missing";
+            pill.className = "badge-status badge-fastboot";
+        }
+    }
+
+    // Update Dashboard Card
+    const adbBadge = document.getElementById("driverBadgeAdb");
+    const fbBadge = document.getElementById("driverBadgeFastboot");
+    const mtkBadge = document.getElementById("driverBadgeMtk");
+    const driverSummary = document.getElementById("driverSummaryText");
+    const driverAlert = document.getElementById("driverAlertBox");
+    const driverActionText = document.getElementById("driverActionText");
+
+    if (adbBadge) {
+        adbBadge.textContent = report.adbDriver.status;
+        adbBadge.className = report.adbDriver.status === "OK" || report.adbDriver.installed ? "badge-status badge-success" : "badge-status badge-danger";
+    }
+    if (fbBadge) {
+        fbBadge.textContent = report.fastbootDriver.status;
+        fbBadge.className = report.fastbootDriver.status === "OK" || report.fastbootDriver.installed ? "badge-status badge-success" : "badge-status badge-danger";
+    }
+    if (mtkBadge) {
+        mtkBadge.textContent = report.mtkDriver.status;
+        mtkBadge.className = report.mtkDriver.status === "OK" || report.mtkDriver.installed ? "badge-status badge-success" : "badge-status badge-neutral";
+    }
+    if (driverSummary) {
+        driverSummary.textContent = report.summary;
+    }
+    if (driverAlert) {
+        if (!report.ready) {
+            driverAlert.style.display = "flex";
+            if (driverActionText) driverActionText.textContent = report.actionNeeded;
+        } else {
+            driverAlert.style.display = "none";
+        }
+    }
+
+    // Step 1 Fastboot Driver Warning Strip
+    const step1FbWarning = document.getElementById("step1FastbootDriverWarning");
+    if (step1FbWarning) {
+        if (!report.fastbootDriver.installed && report.fastbootDriver.status !== "OK") {
+            step1FbWarning.style.display = "flex";
+        } else {
+            step1FbWarning.style.display = "none";
+        }
+    }
+}
+
+async function openDeviceManager() {
+    try {
+        await window.go.main.App.OpenDeviceManager();
+    } catch (e) {
+        appendLog("[ERROR] Could not launch Device Manager: " + e);
+    }
+}
+
+async function openDriverDownload() {
+    try {
+        await window.go.main.App.OpenDriverDownload();
+    } catch (e) {
+        appendLog("[ERROR] Could not open driver download: " + e);
     }
 }
 

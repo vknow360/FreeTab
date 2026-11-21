@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os/exec"
 	"sync"
 	"time"
 
@@ -99,6 +100,31 @@ func (a *App) EnsureTools() (device.ToolPaths, error) {
 	a.fastboot.ExePath = tools.Fastboot
 
 	return tools, nil
+}
+
+// CheckDrivers performs a diagnostic scan of Windows USB drivers for ADB and Fastboot.
+func (a *App) CheckDrivers() *device.DriverReport {
+	report := device.CheckWindowsDrivers()
+	if report.Ready {
+		a.emitLog("✓ " + report.Summary)
+	} else {
+		a.emitLog("⚠️ " + report.Summary)
+		if report.ActionNeeded != "" {
+			a.emitLog("  👉 Action: " + report.ActionNeeded)
+		}
+	}
+	return report
+}
+
+// OpenDeviceManager launches the Windows Device Manager (devmgmt.msc).
+func (a *App) OpenDeviceManager() error {
+	cmd := exec.Command("cmd", "/c", "start", "devmgmt.msc")
+	return cmd.Start()
+}
+
+// OpenDriverDownload opens the official Google USB Driver download URL in the default browser.
+func (a *App) OpenDriverDownload() {
+	wailsRuntime.BrowserOpenURL(a.ctx, device.GoogleUSBDriverURL)
 }
 
 // DetectDevice queries connection status across ADB and Fastboot.

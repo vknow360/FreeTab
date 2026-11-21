@@ -3,11 +3,17 @@
 import {device} from '../models';
 import {main} from '../models';
 
+export function CheckDrivers():Promise<device.DriverReport>;
+
 export function CheckTools():Promise<device.ToolPaths>;
 
 export function DetectDevice():Promise<main.DeviceState>;
 
 export function EnsureTools():Promise<device.ToolPaths>;
+
+export function OpenDeviceManager():Promise<void>;
+
+export function OpenDriverDownload():Promise<void>;
 
 export function RebootToFastboot():Promise<void>;
 

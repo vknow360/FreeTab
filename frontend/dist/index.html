@@ -79,9 +79,13 @@
             </nav>
 
             <div class="sidebar-meta">
-                <button id="btnEnsureTools" class="meta-row">
+                <button id="btnEnsureTools" class="meta-row" title="Verify or download ADB & Fastboot">
                     <span class="meta-label">PLATFORM TOOLS</span>
                     <span id="toolsStatusPill" class="badge-status badge-neutral">Checking...</span>
+                </button>
+                <button id="btnCheckDrivers" class="meta-row" onclick="checkDrivers()" title="Scan Windows USB Drivers" style="margin-top: 6px;">
+                    <span class="meta-label">USB DRIVERS</span>
+                    <span id="driversStatusPill" class="badge-status badge-neutral">Checking...</span>
                 </button>
             </div>
         </aside>
@@ -172,6 +176,61 @@
                                     system RAM.</p>
                             </div>
                             <div class="workflow-arrow">→</div>
+                        </div>
+                    </div>
+
+                    <!-- Windows Driver Diagnostics Card -->
+                    <div class="panel-card" style="margin-top: 20px;">
+                        <div class="card-header">
+                            <h3>Windows USB Driver Diagnostics</h3>
+                            <button class="btn btn-secondary btn-sm" onclick="checkDrivers()">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 4v6h-6"></path>
+                                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                                </svg>
+                                <span>Re-Scan Drivers</span>
+                            </button>
+                        </div>
+                        <p id="driverSummaryText" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+                            Scanning Windows Driver Store and USB subsystem...
+                        </p>
+
+                        <div class="spec-matrix" style="margin-top: 10px;">
+                            <div class="spec-item">
+                                <div class="spec-label">ADB INTERFACE</div>
+                                <div id="driverBadgeAdb" class="spec-value badge-status badge-neutral">Checking...</div>
+                                <div class="spec-desc">Required for offline shell execution &amp; Magisk management.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">FASTBOOT INTERFACE</div>
+                                <div id="driverBadgeFastboot" class="spec-value badge-status badge-neutral">Checking...</div>
+                                <div class="spec-desc">Crucial for Step 1 bootloader unlocking &amp; kernel flashing.</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">MEDIATEK PRELOADER</div>
+                                <div id="driverBadgeMtk" class="spec-value badge-status badge-neutral">Checking...</div>
+                                <div class="spec-desc">MediaTek VCOM / BROM port driver for factory recovery.</div>
+                            </div>
+                        </div>
+
+                        <!-- Driver Action Needed Alert Box -->
+                        <div id="driverAlertBox" class="notice-strip notice-danger" style="margin-top: 14px; display: none;">
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            <div class="notice-body" style="flex: 1;">
+                                <strong id="driverActionText">Driver missing or error detected.</strong>
+                                <div style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button class="btn btn-secondary btn-sm" onclick="openDriverDownload()">
+                                        📥 Download Google USB Driver
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm" onclick="openDeviceManager()">
+                                        ⚙️ Open Device Manager
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -300,6 +359,26 @@
                             <div class="notice-body">
                                 <strong>WATCH TABLET SCREEN:</strong> As soon as the command runs, look at the tablet
                                 screen and press <kbd>Volume Up</kbd> once to confirm bootloader unlock!
+                            </div>
+                        </div>
+
+                        <!-- Fastboot Driver Diagnostic Warning Strip -->
+                        <div id="step1FastbootDriverWarning" class="notice-strip notice-danger" style="margin-top: 12px; display: none;">
+                            <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <div class="notice-body" style="flex: 1;">
+                                <strong>FASTBOOT DRIVER WARNING:</strong> Windows may not have the Fastboot Bootloader driver installed. If the tablet hangs on <code>&lt; waiting for any device &gt;</code> in Fastboot mode, install the Google USB Driver or check Device Manager.
+                                <div style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button class="btn btn-secondary btn-sm" onclick="openDriverDownload()">
+                                        📥 Download Google USB Driver
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm" onclick="openDeviceManager()">
+                                        ⚙️ Open Device Manager
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
