@@ -56,7 +56,7 @@ func (a *Actions) AuthorizeShellRoot(ctx context.Context) error {
 
 	// 1. Wait for ADB device
 	a.log("Waiting for tablet ADB connection...")
-	if err := a.ADB.WaitForDevice(ctx, 30*time.Second); err != nil {
+	if err := a.ADB.WaitForDevice(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -82,25 +82,21 @@ func (a *Actions) AuthorizeShellRoot(ctx context.Context) error {
 	a.log("   2. Tap the 'Superuser' button in the bottom navigation bar (shield icon).")
 	a.log("   3. Find 'Shell' (com.android.shell) in the list and toggle root access to ON.")
 	a.log("--------------------------------------------------------------------------")
-	a.log("  [..] Waiting for you to grant Shell root in Magisk Superuser tab...\n")
+	a.log("  [..] Checking for Shell root in Magisk Superuser tab (10s timeout)...\n")
 
-	// Check for grant in a loop
+	// Check for grant in a 10s loop
 	granted := false
-	for i := 0; i < 45; i++ {
+	for i := 0; i < 10; i++ {
 		time.Sleep(1 * time.Second)
 		check, _ := a.ADB.Shell(ctx, "su -c id")
 		if strings.Contains(check, "uid=0") {
 			granted = true
 			break
 		}
-		if i > 0 && i%10 == 0 {
-			a.log(fmt.Sprintf("  [..] Still waiting (%ds remaining)...", 45-i))
-			a.log("       Open Magisk ➔ Tap 'Superuser' in bottom bar ➔ Toggle 'Shell' ON")
-		}
 	}
 
 	if !granted {
-		return fmt.Errorf("shell root was not detected. Please open Magisk on your tablet, tap the 'Superuser' button in the bottom bar, toggle root access ON for 'Shell', then click 2B again")
+		return fmt.Errorf("shell root was not detected within 10s. Please open Magisk on your tablet, tap the 'Superuser' button in the bottom bar, toggle root access ON for 'Shell', then click 2B again")
 	}
 
 	a.log("  ✓ Superuser permission GRANTED: uid=0 confirmed!")
